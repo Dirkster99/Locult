@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="LocultApp.Views.Pages.SettingsPages.EditBookmarksView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             
+             xmlns:local="clr-namespace:LocultApp.Local"
+             xmlns:behav="clr-namespace:LocultApp.Behaviours"
+             xmlns:dropbrowser="clr-namespace:DropDownButtonLib.Controls;assembly=DropDownButtonLib"
+             >
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <dropbrowser:DropDownButton Grid.Column="0"
+                                         MinHeight="25"
+                                         IsEnabled="True"
+                                         Content="..."                              
+                                         IsOpen="{Binding DropDownBrowser.IsOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         HorizontalAlignment="Left"
+                                         Margin="3">
+                <dropbrowser:DropDownButton.DropDownContent>
+                    <StackPanel xmlns:views="clr-namespace:FolderBrowser.Views;assembly=FolderBrowser" IsHitTestVisible="True" Focusable="True">
+                        <views:DropDownView DataContext="{Binding DropDownBrowser}" />
+                    </StackPanel>
+                </dropbrowser:DropDownButton.DropDownContent>
+            </dropbrowser:DropDownButton>
+
+            <!-- Attached behaviour supports addin entries via enter-->
+            <TextBox Grid.Column="1" Text="{Binding BookmarkSelected}" Name="TxtBookmarkSelected"
+                    behav:TextBoxKeyEntered.Command="{Binding AddFolderCommand}"
+                    Margin="3"
+                    />
+        </Grid>
+
+        <Grid Margin="0,3,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Vertical" Grid.Column="0">
+                <Button Content="{x:Static local:Strings.STR_GENERAL_Add}"
+                        Command="{Binding AddFolderCommand}"
+                        CommandParameter="{Binding ElementName=TxtBookmarkSelected,Path=Text}"
+                        Margin="3,0,3,3"/>
+                <Button Content="{x:Static local:Strings.STR_GENERAL_Remove}"
+                        Command="{Binding RemoveFolderCommand}"
+                        CommandParameter="{Binding BookmarkSelected}"
+                        Margin="3"/>
+
+                <Button Content="{x:Static local:Strings.STR_GENERAL_UP}"
+                        Command="{Binding UpFolderCommand}"
+                        CommandParameter="{Binding ElementName=TxtBookmarkSelected,Path=Text}"
+                        Margin="3"/>
+                <Button Content="{x:Static local:Strings.STR_GENERAL_DOWN}"
+                        Command="{Binding DownFolderCommand}"
+                        CommandParameter="{Binding BookmarkSelected}"
+                        Margin="3"/>
+            </StackPanel>
+
+            <ListBox Grid.Column="1"
+                    ItemsSource="{Binding Bookmarks}"
+                    SelectedItem="{Binding BookmarkSelected}"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Margin="3,0,0,3"
+                    ToolTip="{x:Static local:Strings.STR_BOOKMARK_LIST_CAPTION_TT}"
+                    Name="LST_Bookmarks"
+                />
+        </Grid>
+    </StackPanel>
+</UserControl>

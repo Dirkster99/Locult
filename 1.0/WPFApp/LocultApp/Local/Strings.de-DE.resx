@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CantAccessFile_Error_Text" xml:space="preserve">
+    <value>Dateizugriff ist nicht möglich: {0}.</value>
+  </data>
+  <data name="ParseLogFile_Error_Text" xml:space="preserve">
+    <value>Fehler beim lesen der log Datei!
+[{0}]
+
+{1}</value>
+  </data>
+  <data name="ParseLogFile_Error_Title" xml:space="preserve">
+    <value>Fehler beim laden der Datei..</value>
+  </data>
+  <data name="STR_APPLY_BUTTON_CAPTION" xml:space="preserve">
+    <value>Anwenden</value>
+  </data>
+  <data name="STR_CAPTION_ADD" xml:space="preserve">
+    <value>Hinzufügen</value>
+    <comment>Caption of the Add button</comment>
+  </data>
+  <data name="STR_CAPTION_ADD_Files" xml:space="preserve">
+    <value>Dateien Hinzufügen</value>
+  </data>
+  <data name="STR_CAPTION_CANCEL" xml:space="preserve">
+    <value>Abbrechen</value>
+    <comment>Caption of the Cancel button</comment>
+  </data>
+  <data name="STR_CAPTION_EXIT" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
+  <data name="STR_CAPTION_NEW_BUTTON" xml:space="preserve">
+    <value>Neu...</value>
+    <comment>Caption of the New button</comment>
+  </data>
+  <data name="STR_CAPTION_NEW_BUTTON_TT" xml:space="preserve">
+    <value>Erstellt eine neue Solution für diese Anwendung</value>
+  </data>
+  <data name="STR_CAPTION_OPEN_BUTTON" xml:space="preserve">
+    <value>Öffnen</value>
+  </data>
+  <data name="STR_CAPTION_OPEN_BUTTON_TT" xml:space="preserve">
+    <value>Lädt die Solution in die Anwendung</value>
+  </data>
+  <data name="STR_CAPTION_REMOVE" xml:space="preserve">
+    <value>Entfernen</value>
+    <comment>Caption of the Remove button</comment>
+  </data>
+  <data name="STR_CAPTION_SAVE" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="STR_CAPTION_SAVE_SOLUTION" xml:space="preserve">
+    <value>Solution speichern</value>
+  </data>
+  <data name="STR_CAPTION_SETTINGS" xml:space="preserve">
+    <value>Optionen</value>
+    <comment>Caption of the settings button</comment>
+  </data>
+  <data name="STR_CURRENT_APP_LANG_CAPTION" xml:space="preserve">
+    <value>Anwendungssprache</value>
+    <comment>Caption of language selection option in program settings view.</comment>
+  </data>
+  <data name="STR_FileType_FileFilter_AllFiles" xml:space="preserve">
+    <value>Alle Dateien (*.*)|*.*</value>
+  </data>
+  <data name="STR_FileType_FileFilter_resx" xml:space="preserve">
+    <value>String Resource Dateien (*.resx)|*.resx</value>
+  </data>
+  <data name="STR_General_Caption" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="STR_HEADER_NewSolution" xml:space="preserve">
+    <value>Neue Solution</value>
+  </data>
+  <data name="STR_HEADER_OpenSolution" xml:space="preserve">
+    <value>Solution Öffnen</value>
+  </data>
+  <data name="STR_HEADER_Project" xml:space="preserve">
+    <value>Projekt</value>
+    <comment>Header of the Project groupbox</comment>
+  </data>
+  <data name="STR_HEADER_Solution" xml:space="preserve">
+    <value>Solution</value>
+  </data>
+  <data name="STR_HEADER_TargetFiles" xml:space="preserve">
+    <value>Zieldateien</value>
+    <comment>Header of the Target File groupbox</comment>
+  </data>
+  <data name="STR_LABEL_Comment" xml:space="preserve">
+    <value>Kommentar</value>
+    <comment>Label of the Comment text box</comment>
+  </data>
+  <data name="STR_LABEL_Error_Details" xml:space="preserve">
+    <value>Fehlerdetails</value>
+    <comment>Label of the Error Details expander</comment>
+  </data>
+  <data name="STR_LABEL_FILES" xml:space="preserve">
+    <value>Dateien</value>
+    <comment>Label of the Files listbox</comment>
+  </data>
+  <data name="STR_LABEL_Location" xml:space="preserve">
+    <value>Verzeichnis</value>
+  </data>
+  <data name="STR_LABEL_Name" xml:space="preserve">
+    <value>Name</value>
+    <comment>Label of the Name textbox label</comment>
+  </data>
+  <data name="STR_LABEL_PATH" xml:space="preserve">
+    <value>Pfad</value>
+    <comment>Label of the Path text box</comment>
+  </data>
+  <data name="STR_LABEL_SOLUTION_LOCATION" xml:space="preserve">
+    <value>Solution Verzeichnis</value>
+  </data>
+  <data name="STR_LABEL_SourceFile" xml:space="preserve">
+    <value>Quelldatei</value>
+    <comment>Label of the Source File textbox</comment>
+  </data>
+  <data name="STR_LABEL_SourceFileDirectory" xml:space="preserve">
+    <value>Quelldatei Verzeichnis</value>
+  </data>
+  <data name="STR_MSG_ErrorSavingFile" xml:space="preserve">
+    <value>Ein unerwartes Problem ist während des speichern einer Datei aufgetretten.</value>
+  </data>
+  <data name="STR_MSG_ErrorWhileSavingAFile" xml:space="preserve">
+    <value>Fehler '{0}'\nist während des speicherns einer Datei aufgetretten.</value>
+  </data>
+  <data name="STR_MSG_ErrorWhileSavingFileX" xml:space="preserve">
+    <value>Fehler '{0}'\nist während des speichern der Datei aufgetretten\n:'{1}'</value>
+  </data>
+  <data name="STR_MSG_UnknownError_Caption" xml:space="preserve">
+    <value>Unbehandelter Fehler</value>
+  </data>
+  <data name="STR_MSG_UnknownError_InShutDownProcess" xml:space="preserve">
+    <value>Fehler beim herunterfahren der Applikation</value>
+  </data>
+  <data name="STR_MS_Translate_Caption" xml:space="preserve">
+    <value>Microsoft-Übersetzungsdienst</value>
+    <comment>Caption of corresponding options groupbox in program settings view.</comment>
+  </data>
+  <data name="STR_MS_TRANSLATE_PASSWD_CAPTION" xml:space="preserve">
+    <value>Passwort</value>
+    <comment>Caption of option in Microsoft Translation Service groupbox in program settings view.</comment>
+  </data>
+  <data name="STR_MS_TRANSLATE_URI_CAPTION" xml:space="preserve">
+    <value>Uri</value>
+  </data>
+  <data name="STR_MS_TRANSLATE_USER_CAPTION" xml:space="preserve">
+    <value>Benutzer</value>
+    <comment>Caption of option in Microsoft Translation Service groupbox in program settings view.</comment>
+  </data>
+  <data name="STR_ReloadFilesOnStartUp_CAPTION" xml:space="preserve">
+    <value>Dateien aus der alten Sitzung wiederherstellen</value>
+  </data>
+  <data name="STR_SourceLanguage_GridColumn_Header" xml:space="preserve">
+    <value>Quellsprache</value>
+  </data>
+  <data name="STR_State" xml:space="preserve">
+    <value>Zustand</value>
+    <comment>State column header label in translation grid</comment>
+  </data>
+  <data name="STR_TargetLanguage_GridColumn_Header" xml:space="preserve">
+    <value>Zielsprache</value>
+  </data>
+  <data name="STR_Translate" xml:space="preserve">
+    <value>Übersetze</value>
+    <comment>Is a page title of the translation page</comment>
+  </data>
+  <data name="STR_Translate_ContextMenu_Caption" xml:space="preserve">
+    <value>übersetzen</value>
+  </data>
+  <data name="STR_Translate_FromSourceTo_Target" xml:space="preserve">
+    <value>übersetzen</value>
+    <comment>Button caption that is displayed with arrow to indicate direction of translation</comment>
+  </data>
+  <data name="STR_Translate_FromTargetTo_Source" xml:space="preserve">
+    <value>übersetzen</value>
+    <comment>Button caption that is displayed with arrow to indicate direction of translation</comment>
+  </data>
+  <data name="STR_KEY_GRIDCOLUMN_HEADER" xml:space="preserve">
+    <value>Schlüssel</value>
+  </data>
+  <data name="STR_BLOCKED_SOLUTION_TASK" xml:space="preserve">
+    <value>Die Lösung Aufgabenverarbeitung wird von einem anderen Task "{0}" blockiert.</value>
+  </data>
+  <data name="STR_CONFIRM_DELETING_ENTRIES" xml:space="preserve">
+    <value>Sind Sie sicher {0} Einträge löschen?</value>
+  </data>
+  <data name="STR_CONFIRM_DELETING_ENTRIES_CAPTION" xml:space="preserve">
+    <value>Löschen Eintrag?</value>
+  </data>
+  <data name="STR_CREATED_WITH_DATE_TIME_APPENDED" xml:space="preserve">
+    <value>Erstellt</value>
+    <comment>Is used in an automatically generated comment field that contains information about the date and time when a file was created, as in, "Created: 2015-01-12"</comment>
+  </data>
+  <data name="STR_ERROR_ACCESSING_DIRECTORY" xml:space="preserve">
+    <value>Das Verzeichnis: '{0}' \nfor die neue Lösung kann nicht zugegriffen werden.</value>
+  </data>
+  <data name="STR_ERROR_ACCESSING_FILE" xml:space="preserve">
+    <value>Die Datei: '{0}' \ncannot zugegriffen werden.</value>
+  </data>
+  <data name="STR_ERROR_ACCESSING_FILE_CREATE_WOULD_Overwrite" xml:space="preserve">
+    <value>Die Datei:\n'{0}'\n ist bereits vorhanden. Verwenden Sie "Projektmappe Öffnen" um zu sie bearbeiten.</value>
+  </data>
+  <data name="STR_ERROR_DUPLICATE_REFERENCE" xml:space="preserve">
+    <value>Der Verweis auf: \n "{0}" \nist ein dublikat in Quelle und Ziel.</value>
+  </data>
+  <data name="STR_FAILED_RESET_OF_SOLUTION_TASK" xml:space="preserve">
+    <value>Zurücksetzen der Verarbeitung der Projektmappe ist fehlgeschlagen: "{0}"</value>
+  </data>
+  <data name="STR_LEAVE_SETTINGS_WITHOUT_SAVING_CHANGES" xml:space="preserve">
+    <value>Sind Sie sicher, Einstellungen zu verlassen, ohne Änderungen zu speichern?</value>
+  </data>
+  <data name="STR_LEAVE_SETTINGS_WITHOUT_SAVING_CHANGES_TT" xml:space="preserve">
+    <value>Ohne speichern der Änderungen weiter machen?</value>
+  </data>
+  <data name="STR_UNEXPECTED_ERROR" xml:space="preserve">
+    <value>Unerwarteter Fehler</value>
+  </data>
+  <data name="STR_PROGRAM_SETTINGS_PAGE_TITLE" xml:space="preserve">
+    <value>Programmeinstellungen</value>
+  </data>
+  <data name="STR_PROGRAM_SETTINGS_PAGE_TITLE_TT" xml:space="preserve">
+    <value>Verwenden Sie diese Seite, um das Setup des Programms anzupassen.</value>
+  </data>
+  <data name="STR_START_PAGE_TITLE" xml:space="preserve">
+    <value>Erste Schritte</value>
+  </data>
+  <data name="STR_START_PAGE_TITLE_TT" xml:space="preserve">
+    <value>Verwenden Sie diese Seite, um eine neue Projektmappe mit einem Übersetzungsprojekt zu erstellen oder eine vorhandene Projektmappe zu laden.</value>
+  </data>
+  <data name="STR_ASK_TO_SAVE_CHANGES" xml:space="preserve">
+    <value>Änderungen für die folgenden Dateien speichern?</value>
+  </data>
+  <data name="STR_CANCEL_LOAD_MESSAGE" xml:space="preserve">
+    <value>Ein Ladevorgang ist derzeit aktiv. Möchten Sie den aktuellen Vorgang abbrechen?</value>
+  </data>
+  <data name="STR_CANCEL_SAVE_MESSAGE" xml:space="preserve">
+    <value>Ein Speichervorgang ist gerade aktiv. Möchten Sie den aktuellen Vorgang abbrechen?</value>
+  </data>
+  <data name="STR_ERROR_SOURCE_COMMENT_WITHOUT_TRANSLATION" xml:space="preserve">
+    <value>Für das ändern eines Zielwert-Kommentars muss eine Übersetzung vorhanden sein.</value>
+  </data>
+  <data name="STR_ERROR_TARGET_COMMENT_WITHOUT_TRANSLATION" xml:space="preserve">
+    <value>Für das ändern eines Quellwert-Kommentars muss eine Übersetzung vorhanden sein.</value>
+  </data>
+  <data name="STR_CAPTION_SHOW_STARTPAGE" xml:space="preserve">
+    <value>Startseite</value>
+    <comment>Button caption of the view Start Page function</comment>
+  </data>
+  <data name="STR_CURRENT_APP_LANG_CAPTION_TT" xml:space="preserve">
+    <value>Wählen Sie Ihre Anwendungssprache</value>
+  </data>
+  <data name="STR_DefaultSourceLanguage_CAPTION" xml:space="preserve">
+    <value>Standard-Quellsprache</value>
+  </data>
+  <data name="STR_DefaultSourceLanguage_CAPTION_TT" xml:space="preserve">
+    <value>Wählen Sie die Standardsprache für die Quelle der Übersetzung aus.</value>
+  </data>
+  <data name="STR_NewDefaultSolutionOptions_Caption" xml:space="preserve">
+    <value>Standardeinstellungen für neue Projektmappe</value>
+  </data>
+  <data name="STR_DefaultTargetLanguage_CAPTION" xml:space="preserve">
+    <value>Standard-Zielsprache</value>
+  </data>
+  <data name="STR_DefaultTargetLanguage_CAPTION_TT" xml:space="preserve">
+    <value>Wählen Sie Ihr Standard-Zielsprache aus.</value>
+  </data>
+  <data name="STR_LABEL_FOLDER_SELECTION" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="STR_SELECT_A_FOLDER" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="STR_Unknown_Error" xml:space="preserve">
+    <value>Unbekannter Fehler</value>
+  </data>
+  <data name="STR_ERROR_CODE" xml:space="preserve">
+    <value>Code</value>
+  </data>
+</root>

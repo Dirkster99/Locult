@@ -1,0 +1,207 @@
+﻿<UserControl x:Class=" LocultApp.Views.Pages.EditPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+
+             xmlns:conv="clr-namespace:LocultApp.Converter"
+             xmlns:behav="clr-namespace:LocultApp.Behaviours"
+             xmlns:editPageViews="clr-namespace:LocultApp.Views.Pages.EditPageDocuments"
+             xmlns:views="clr-namespace:LocultApp.Views.Pages"
+             xmlns:editvm="clr-namespace:LocultApp.ViewModels.Pages.EditPageDocuments"
+             xmlns:solutionvm="clr-namespace:TranslationSolutionViewModelLib.ViewModels;assembly=TranslationSolutionViewModelLib"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="300">
+    <Grid>
+        <!-- This View implements the main editing view with a tree view on the left side
+             and corresponding views being shown on the right side.
+        -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0"
+              IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=views:EditPage,AncestorLevel=1}, Path=IsEnablePage}"
+              MinWidth="125" Margin="3">
+            <Grid.Resources>
+                <behav:BindingProxy x:Key="DataContextProxy" Data="{Binding}" />
+
+                <Style TargetType="TextBlock" x:Key="RootItemStyle">
+                    <Setter Property="Text" Value="{Binding ItemName,UpdateSourceTrigger=PropertyChanged}" />
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding ItemTip,UpdateSourceTrigger=PropertyChanged}" />
+                                <Separator />
+                                <TextBlock Text="{Binding ItemPathName,UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsDirty, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                            <Setter Property="Text" Value="{Binding ItemName, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=IsDirty, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                            <Setter Property="Text" Value="{Binding ItemName, StringFormat='\{0\}*', UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ItemTip,UpdateSourceTrigger=PropertyChanged}" Value="{x:Null}">
+                            <Setter Property="ToolTip">
+                                <Setter.Value>
+                                    <Grid>
+                                        <TextBlock Text="{Binding ItemPathName,UpdateSourceTrigger=PropertyChanged}" />
+                                    </Grid>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+                <Style TargetType="TextBlock" x:Key="NiceItemTip">
+                    <Setter Property="Text" Value="{Binding ItemName,UpdateSourceTrigger=PropertyChanged}" />
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding ItemTip,UpdateSourceTrigger=PropertyChanged}" />
+                                <Separator />
+                                <TextBlock Text="{Binding ItemPathName,UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ItemTip,UpdateSourceTrigger=PropertyChanged}" Value="{x:Null}">
+                            <Setter Property="ToolTip">
+                                <Setter.Value>
+                                    <Grid>
+                                        <TextBlock Text="{Binding ItemPathName,UpdateSourceTrigger=PropertyChanged}" />
+                                    </Grid>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+
+                <HierarchicalDataTemplate DataType="{x:Type solutionvm:SolutionRootViewModel}"
+                                          ItemsSource="{Binding Children}">
+                    <!-- Display the root item with this element -->
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="{Binding Data.IconSize, Source={StaticResource DataContextProxy}}"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               Margin="0" >
+                            <Image.Source>
+                                <MultiBinding Converter="{conv:SolutionItemEnumToImage}">
+                                    <Binding Path="TypeOfItem" UpdateSourceTrigger="PropertyChanged" />
+                                    <Binding Path="Exists" UpdateSourceTrigger="PropertyChanged" />
+                                </MultiBinding>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock ToolTipService.ShowOnDisabled="True"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource RootItemStyle}"
+                                    Margin="3,0" />
+                        <!-- behav:MergeStyleBehaviour.AutoMergeStyle="True" -->
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <!-- Display projects with this element -->
+                <HierarchicalDataTemplate DataType="{x:Type solutionvm:ProjectViewModel}"  ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="{Binding Data.IconSize, Source={StaticResource DataContextProxy}}"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               Margin="0">
+                            <Image.Source>
+                                <MultiBinding Converter="{conv:SolutionItemEnumToImage}">
+                                    <Binding Path="TypeOfItem" UpdateSourceTrigger="PropertyChanged" />
+                                    <Binding Path="Exists" UpdateSourceTrigger="PropertyChanged" />
+                                </MultiBinding>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock ToolTipService.ShowOnDisabled="True"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource NiceItemTip}"
+                                    Margin="3,0" />
+                        <!-- behav:MergeStyleBehaviour.AutoMergeStyle="True" -->
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <!-- Display files with this element -->
+                <HierarchicalDataTemplate DataType="{x:Type solutionvm:FileReferenceViewModel}"  ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="{Binding Data.IconSize, Source={StaticResource DataContextProxy}}"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               Margin="0" >
+                            <Image.Source>
+                                <MultiBinding Converter="{conv:SolutionItemEnumToImage}">
+                                    <Binding Path="TypeOfItem" UpdateSourceTrigger="PropertyChanged" />
+                                    <Binding Path="Exists" UpdateSourceTrigger="PropertyChanged" />
+                                </MultiBinding>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock ToolTipService.ShowOnDisabled="True"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource NiceItemTip}"
+                                    Margin="3,0" />
+                        <!-- behav:MergeStyleBehaviour.AutoMergeStyle="True" -->
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TreeView Grid.Row="1" 
+                      ItemsSource="{Binding Solution.Children}"
+                      behav:TreeViewSelectionChangedBehavior.UndoSelection="{Binding IsCurrentDocumentDirty}"
+                      behav:TreeViewSelectionChangedBehavior.ChangedCommand="{Binding SolutionItemSelectedCommand}"
+                      behav:MergeStyleBehaviour.AutoMergeStyle="true"
+                      Margin="3" >
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="Margin" Value="2" />
+                        <Setter Property="behav:TreeViewItemBehaviour.IsBroughtIntoViewWhenSelected" Value="True" />
+                        <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <!-- http://social.msdn.microsoft.com/Forums/en-US/wpf/thread/63696841-0358-4f7a-abe1-e6062518e3d6 -->
+                        <Setter Property="behav:MergeStyleBehaviour.AutoMergeStyle" Value="True"/>
+
+                        <!-- Setter Property="FontWeight" Value="Normal" />
+                              <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                  <Setter Property="FontWeight" Value="Bold" />
+                                </Trigger>
+                        </Style.Triggers -->
+                    </Style>
+                </TreeView.ItemContainerStyle>
+            </TreeView>
+        </Grid>
+
+        <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="3" Grid.Column="1" />
+
+        <Grid Grid.Column="2" Margin="3">
+            <Grid.Resources>
+                <!--
+                These datatemplates map a type of viewmodel into their view.
+                This map definition is used below in the ContentPresenter to
+                show the correct page for each type of view.
+                -->
+                <DataTemplate DataType="{x:Type editvm:EditTranslationsDocumentViewModel}">
+                    <editPageViews:EditTranslationDocumentView
+                        IsEnablePage="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=views:EditPage,AncestorLevel=1}, Path=IsEnablePage}" />
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type editvm:EditProjectDocumentViewModel}">
+                    <editPageViews:EditProjectDocumentView
+                        IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=views:EditPage,AncestorLevel=1}, Path=IsEnablePage}" />
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type editvm:EditSolutionDocumentViewModel}">
+                    <editPageViews:EditSolutionDocumentView
+                        IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=views:EditPage,AncestorLevel=1}, Path=IsEnablePage}" />
+                </DataTemplate>
+            </Grid.Resources>
+
+            <ContentPresenter Content="{Binding CurrentEditPage}" />
+        </Grid>
+    </Grid>
+
+</UserControl>

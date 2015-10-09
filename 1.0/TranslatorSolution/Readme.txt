@@ -1,0 +1,1 @@
+xsd /c /n:Models "C:\Users\BahleDi\Documents\Visual Studio 2013\Projects\XMLReadWriteSample\XMLReadWriteSample\Resource\ApplicationSettings.xsd"

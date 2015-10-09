@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document
+  Size="1793.79,1793.79" xmlns="MiniUml">
+  <Note
+    Name=""
+    ID=""
+    Position="809,418,119,62">
+    <Text>CurrentPage
+(Property)</Text>
+  </Note>
+  <Note
+    Name=""
+    ID=""
+    Position="686,48,332,83">
+    <Text>RequestedEvent : ApplicationRequestEventHandler
+event is bound to
+RequestedApplicationAction()</Text>
+  </Note>
+  <Note
+    Name=""
+    ID=""
+    Position="973,195,162,75">
+    <Text>SolutionOperations
+(Property)</Text>
+  </Note>
+  <Note
+    Name=""
+    ID=""
+    Position="386,225,120,88">
+    <Text>PageManager
+(Property)</Text>
+  </Note>
+  <Class
+    Name="StringCollectionDiffViewModel"
+    ID="auto_1"
+    Position="982,655,187,74"
+    Stereotype="" />
+  <Class
+    Name="StringCollectionViewModel"
+    ID="auto_2"
+    Position="983,797,175,62"
+    Stereotype="" />
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_1"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_2"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="1078,729" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="1078,797" />
+  </Composition>
+  <Note
+    Name=""
+    ID=""
+    Position="1081,857,254,59">
+    <Text>Collection Property is exposed via LogView property</Text>
+  </Note>
+  <Class
+    Name="EntryDiffViewModel"
+    ID="auto_4"
+    Position="983,921,183,67"
+    Stereotype="" />
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_2"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_4"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="1077,859" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="1077,921" />
+  </Composition>
+  <Class
+    Name="AppViewModel"
+    ID="auto_6"
+    Position="207,126,168,198"
+    Stereotype="" />
+  <Class
+    Name="AppLifeCycleViewModel"
+    ID=""
+    Position="207,2,170,84"
+    Stereotype="" />
+  <Class
+    Name="PageManagerViewModel"
+    ID="auto_5"
+    Position="523,126,168,198"
+    Stereotype="" />
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_6"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_5"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="375,231" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="523,231" />
+  </Composition>
+  <Class
+    Name="StartPageViewModel"
+    ID="auto_7"
+    Position="806,162,157,75"
+    Stereotype="" />
+  <Class
+    Name="NewSolutionViewModel"
+    ID="auto_9"
+    Position="1141,64,171,75"
+    Stereotype="" />
+  <Class
+    Name="OpenSolutionViewModel"
+    ID="auto_8"
+    Position="1142,154,171,75"
+    Stereotype="" />
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_7"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_8"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="963,203" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="1142,203" />
+  </Composition>
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_7"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_9"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="963,183" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="1141,107" />
+  </Composition>
+  <Class
+    Name="StartPageSolutinoViewModel"
+    ID="auto_A"
+    Position="1378,112,179,75"
+    Stereotype="" />
+  <Inheritance
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_9"
+    FromArrow=""
+    To="auto_A"
+    ToArrow="Uml.Arrows.Triangle">
+    <Anchor
+      Name=""
+      ID=""
+      Position="1312,111" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="1378,146" />
+  </Inheritance>
+  <Inheritance
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_8"
+    FromArrow=""
+    To="auto_A"
+    ToArrow="Uml.Arrows.Triangle">
+    <Anchor
+      Name=""
+      ID=""
+      Position="1313,203" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="1378,169" />
+  </Inheritance>
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_5"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_7"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="691,205" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="806,205" />
+  </Composition>
+  <Association
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_7"
+    FromArrow=""
+    To="auto_5"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="877,162" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="691,132" />
+  </Association>
+  <Note
+    Name=""
+    ID=""
+    Position="686,206,119,62">
+    <Text>CurrentPage
+(Property)</Text>
+  </Note>
+  <Class
+    Name="EditPageViewModel"
+    ID="auto_B"
+    Position="697,351,181,75"
+    Stereotype="" />
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_5"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_B"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="691,274" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="788,351" />
+  </Composition>
+  <Class
+    Name="EditProjectDocumentViewModel"
+    ID="auto_C"
+    Position="975,404,211,75"
+    Stereotype="" />
+  <Class
+    Name="EditSolutionDocumentViewModel"
+    ID="auto_D"
+    Position="979,307,210,75"
+    Stereotype="" />
+  <Class
+    Name="EditTranslationDocumentViewModel"
+    ID="auto_E"
+    Position="975,491,211,75"
+    Stereotype="" />
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_B"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_D"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="878,391" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="979,349" />
+  </Composition>
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_B"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_C"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="878,404" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="975,410" />
+  </Composition>
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_B"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_E"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="878,416" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="975,523" />
+  </Composition>
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_E"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_1"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="1070,566" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="1070,655" />
+  </Composition>
+  <Note
+    Name=""
+    ID=""
+    Position="1082,730,164,43">
+    <Text>DiffSource property</Text>
+  </Note>
+  <Note
+    Name=""
+    ID=""
+    Position="1078,585,164,43">
+    <Text>StringDiff property</Text>
+  </Note>
+</Document>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document
+  Size="1793.79,1793.79" xmlns="MiniUml">
+  <Class
+    Name="StringCollectionDiffViewModel"
+    ID="auto_1"
+    Position="250,29,187,74"
+    Stereotype="" />
+  <Class
+    Name="StringCollectionViewModel"
+    ID="auto_2"
+    Position="479,38,175,62"
+    Stereotype="" />
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_1"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_2"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="437,70" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="479,70" />
+  </Composition>
+  <Note
+    Name=""
+    ID=""
+    Position="469,107,206,75">
+    <Text>Collection Property is exposed via LogView
+property</Text>
+  </Note>
+  <Class
+    Name="EntryDiffViewModel"
+    ID="auto_4"
+    Position="713,36,183,67"
+    Stereotype="" />
+  <Composition
+    Name=""
+    ID=""
+    Position="0,0"
+    From="auto_2"
+    FromArrow="Uml.Diamonds.Black"
+    To="auto_4"
+    ToArrow="">
+    <Anchor
+      Name=""
+      ID=""
+      Position="654,79" />
+    <Anchor
+      Name=""
+      ID=""
+      Position="713,79" />
+  </Composition>
+</Document>

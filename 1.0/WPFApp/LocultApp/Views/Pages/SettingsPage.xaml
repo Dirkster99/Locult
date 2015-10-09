@@ -1,0 +1,96 @@
+﻿<UserControl x:Class=" LocultApp.Views.Pages.SettingsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600"
+             
+             xmlns:conv="clr-namespace:LocultApp.Converter"
+             xmlns:behav="clr-namespace:LocultApp.Behaviours"
+             xmlns:local="clr-namespace:LocultApp.Local"
+             xmlns:settingPages="clr-namespace:LocultApp.Views.Pages.SettingsPages"
+             >
+    <Grid Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Margin="0,0,0,12" Style="{StaticResource Heading1}" >
+                <TextBlock ToolTip="{Binding PageDisplayName_Tip}" >
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=IsDirty, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                                <Setter Property="Text" Value="{Binding PageDisplayName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=IsDirty, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                <Setter Property="Text" Value="{Binding PageDisplayName, StringFormat='\{0\}*', UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+                </TextBlock>
+            </TextBlock>
+
+        <Grid Grid.Row="1" Style="{StaticResource ContentRoot}"
+          xmlns:viewmodel="clr-namespace:LocultApp.ViewModels.Pages.SettingsPages"
+          xmlns:views="clr-namespace:LocultApp.Views.Pages.SettingsPages"
+          >
+            <Grid.Resources>
+                <behav:BindingProxy x:Key="DataContextProxy" Data="{Binding}" />
+                <!-- DataTemplate DataType="{x:Type viewmodel:GeneralSettingsViewModel}">
+                    <views:GeneralSettingsView />
+                </>
+
+                - DataTemplate DataType="{x:Type viewmodel:AppearanceViewModel}">
+                    <views:Appearance />
+                -
+
+                <DataTemplate DataType="{x:Type viewmodel:AboutViewModel}">
+                    <views:About />
+                </DataTemplate -->
+            </Grid.Resources>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ListBox Grid.Column="0"
+                 ItemsSource="{Binding Pages}"
+                 SelectedItem="{Binding SelectedPage}"
+                 MinWidth="150"
+                 >
+                <ListBox.ItemTemplate>
+                    <DataTemplate xmlns:conv="clr-namespace:LocultApp.Converter"
+                    >
+                        <DataTemplate.Resources>
+                            <conv:UpperCaseDateConverter x:Key="UpperCaseDateConverter" />
+                        </DataTemplate.Resources>
+                        <TextBlock Margin="9,3"
+                                   Text="{Binding DisplayTitle, Converter={StaticResource UpperCaseDateConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Border Grid.Column="1" VerticalAlignment="Stretch"
+                Margin="0"
+                BorderBrush="{DynamicResource Accent}" BorderThickness="1">
+            </Border>
+
+            <Grid Grid.Column="2">
+                <!-- This content control display the actual content when a user selects an item in the list-->
+                <ContentPresenter Content="{Binding SelectedPage, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                  ContentTemplateSelector="{Binding Source={StaticResource DataContextProxy}, Path=Data.PageTemplateSelector}"
+                                  Margin="32,0,0,0"
+                                />
+            </Grid>
+        </Grid>
+
+    </Grid>
+</UserControl>

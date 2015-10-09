@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="BCP47_List.xsl"?>
+<CultureInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             Version="1.00.00">
+  <!-- 
+The format for the culture name is "languagecode-country/regioncode", where languagecode is the language code and country/regioncode is the subculture code. Examples include "ja-JP" for Japanese (Japan) and "en-US" for English (United States). In cases where a two-letter language code is not available, a three-letter code derived from ISO 639-2 is used.
+
+Some culture names also specify an ISO 15924 script. For example, "-Cyrl" specifies the Cyrillic script and "-Latn" specifies the Latin script. A culture name including a script is rendered using the pattern "languagecode-scripttag-country/regioncode". An example of this type of culture name is "uz-Cyrl-UZ" for Uzbek (Uzbekistan, Cyrillic).
+
+A neutral culture (a culture defined by a language with no specific country/region) is specified by the two-letter lowercase language code only. For example, "fr" specifies the neutral culture for French, and "de" specifies the neutral culture for German.
+
+Note:
+There are two culture names that contradict this rule. The cultures "zh-Hans" (Simplified Chinese) and "zh-Hant" (Traditional Chinese) are neutral cultures.
+
+The entries in this file lists the predefined culture names that are recognized by the .NET Framework and that can be used when instantiating a CultureInfo object. However, because the .NET Framework retrieves culture information from the operating system, the availability of cultural information may vary depending on the platform and operating system version.
+
+2015-06-04
+
+Culture/language name Culture
+"" (empty string) Invariant culture
+
+-->
+
+  <Comment>
+    Created: 6/4/2015 6:09:07 PM
+    Source: https://msdn.microsoft.com/en-us/library/windows/apps/system.globalization.cultureinfo%28v=vs.105%29.aspx
+  </Comment>
+  <Cultures>
+    <CultureLanguage name="af" language="Afrikaans">
+        <CultureLanguageCountry name="af-ZA" language="Afrikaans" country="South Africa"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="sq" language="Albanian">
+      <CultureLanguageCountry name="sq-AL" language="Albanian" country="Albania"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="ar" language="Arabic">
+      <CultureLanguageCountry name="ar-DZ" language="Arabic" country="Algeria"/>
+      <CultureLanguageCountry name="ar-BH" language="Arabic" country="Bahrain"/>
+      <CultureLanguageCountry name="ar-EG" language="Arabic" country="Egypt"/>
+      <CultureLanguageCountry name="ar-IQ" language="Arabic" country="Iraq"/>
+      <CultureLanguageCountry name="ar-JO" language="Arabic" country="Jordan"/>
+      <CultureLanguageCountry name="ar-KW" language="Arabic" country="Kuwait"/>
+      <CultureLanguageCountry name="ar-LB" language="Arabic" country="Lebanon"/>
+      <CultureLanguageCountry name="ar-LY" language="Arabic" country="Libya"/>
+      <CultureLanguageCountry name="ar-MA" language="Arabic" country="Morocco"/>
+      <CultureLanguageCountry name="ar-OM" language="Arabic" country="Oman"/>
+      <CultureLanguageCountry name="ar-QA" language="Arabic" country="Qatar"/>
+      <CultureLanguageCountry name="ar-SA" language="Arabic" country="Saudi Arabia"/>
+      <CultureLanguageCountry name="ar-SY" language="Arabic" country="Syria"/>
+      <CultureLanguageCountry name="ar-TN" language="Arabic" country="Tunisia"/>
+      <CultureLanguageCountry name="ar-AE" language="Arabic" country="U.A.E."/>
+      <CultureLanguageCountry name="ar-YE" language="Arabic" country="Yemen"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="hy" language="Armenian">
+      <CultureLanguageCountry name="hy-AM" language="Armenian" country="Armenia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="az" language="Azeri">
+      <CultureLanguageCountry name="az-Cyrl-AZ" language="Azeri" country="Azerbaijan, Cyrillic"/>
+      <CultureLanguageCountry name="az-Latn-AZ" language="Azeri" country="Azerbaijan, Latin"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="eu" language="Basque">
+      <CultureLanguageCountry name="eu-ES" language="Basque" country="Basque"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="be" language="Belarusian">
+      <CultureLanguageCountry name="be-BY" language="Belarusian" country="Belarus"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="bg" language="Bulgarian">
+      <CultureLanguageCountry name="bg-BG" language="Bulgarian" country="Bulgaria"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="ca" language="Catalan">
+      <CultureLanguageCountry name="ca-ES" language="Catalan" country="Catalan"/>
+    </CultureLanguage>
+
+    <Country name="China">
+      <CultureLanguageArea name="zh-HK" language="Chinese" area="Hong Kong SAR, PRC"/>
+      <CultureLanguageArea name="zh-MO" language="Chinese" area="Macao SAR"/>
+      <CultureLanguageArea name="zh-SG" language="Chinese" area="Singapore"/>
+      <CultureLanguageArea name="zh-TW" language="Chinese" area="Taiwan"/>
+      
+      <CultureLanguageArea name="zh-CN" language="Chinese" area="PRC"/>
+      <CultureLanguageArea name="zh-Hans" language="Chinese" area="Simplified"/>
+      <CultureLanguageArea name="zh-Hant" language="Chinese" area="Traditional"/>
+    </Country>
+
+    <CultureLanguage name="hr" language="Croatian">
+      <CultureLanguageCountry name="hr-BA" language="Croatian" country="Bosnia and Herzegovina"/>
+      <CultureLanguageCountry name="hr-HR" language="Croatian" country="Croatia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="cs" language="Czech">
+      <CultureLanguageCountry name="cs-CZ" language="Czech" country="Czech Republic"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="da" language="Danish">
+      <CultureLanguageCountry name="da-DK" language="Danish" country="Denmark"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="dv" language="Divehi">
+      <CultureLanguageCountry name="dv-MV" language="Divehi" country="Maldives"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="nl" language="Dutch">
+      <CultureLanguageCountry name="nl-BE" language="Dutch" country="Belgium"/>
+      <CultureLanguageCountry name="nl-NL" language="Dutch" country="Netherlands"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="en" language="English">
+      <CultureLanguageCountry name="en-AU" language="English" country="Australia"/>
+      <CultureLanguageCountry name="en-BZ" language="English" country="Belize"/>
+      <CultureLanguageCountry name="en-CA" language="English" country="Canada"/>
+      <CultureLanguageCountry name="en-029" language="English" country="Caribbean"/>
+      <CultureLanguageCountry name="en-IE" language="English" country="Ireland"/>
+      <CultureLanguageCountry name="en-JM" language="English" country="Jamaica"/>
+      <CultureLanguageCountry name="en-NZ" language="English" country="New Zealand"/>
+      <CultureLanguageCountry name="en-PH" language="English" country="Philippines"/>
+      <CultureLanguageCountry name="en-ZA" language="English" country="South Africa"/>
+      <CultureLanguageCountry name="en-TT" language="English" country="Trinidad and Tobago"/>
+      <CultureLanguageCountry name="en-GB" language="English" country="United Kingdom"/>
+      <CultureLanguageCountry name="en-US" language="English" country="United States"/>
+      <CultureLanguageCountry name="en-ZW" language="English" country="Zimbabwe"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="et" language="Estonian">
+      <CultureLanguageCountry name="et-EE" language="Estonian" country="Estonia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="fo" language="Faroese">
+      <CultureLanguageCountry name="fo-FO" language="Faroese" country="Faroe Islands"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="fa" language="Farsi">
+      <CultureLanguageCountry name="fa-IR" language="Farsi" country="Iran"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="fi" language="Finnish">
+      <CultureLanguageCountry name="fi-FI" language="Finnish" country="Finland"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="fr" language="French">
+      <CultureLanguageCountry name="fr-BE" language="French" country="Belgium"/>
+      <CultureLanguageCountry name="fr-CA" language="French" country="Canada"/>
+      <CultureLanguageCountry name="fr-FR" language="French" country="France"/>
+      <CultureLanguageCountry name="fr-LU" language="French" country="Luxembourg"/>
+      <CultureLanguageCountry name="fr-MC" language="French" country="Monaco"/>
+      <CultureLanguageCountry name="fr-CH" language="French" country="Switzerland"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="gl" language="Galician">
+      <CultureLanguageCountry name="gl-ES" language="Galician" country="Spain"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="ka" language="Georgian">
+      <CultureLanguageCountry name="ka-GE" language="Georgian" country="Georgia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="de" language="German">
+      <CultureLanguageCountry name="de-AT" language="German" country="Austria"/>
+      <CultureLanguageCountry name="de-DE" language="German" country="Germany"/>
+      <CultureLanguageCountry name="de-DE_phoneb" language="German" country="Germany, phone book sort"/>
+      <CultureLanguageCountry name="de-LI" language="German" country="Liechtenstein"/>
+      <CultureLanguageCountry name="de-LU" language="German" country="Luxembourg"/>
+      <CultureLanguageCountry name="de-CH" language="German" country="Switzerland"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="el" language="Greek">
+      <CultureLanguageCountry name="el-GR" language="Greek" country="Greece"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="gu" language="Gujarati">
+      <CultureLanguageCountry name="gu-IN" language="Gujarati" country="India"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="he" language="Hebrew">
+      <CultureLanguageCountry name="he-IL" language="Hebrew" country="Israel"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="hi" language="Hindi">
+      <CultureLanguageCountry name="hi-IN" language="Hindi" country="India"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="hu" language="Hungarian">
+      <CultureLanguageCountry name="hu-HU" language="Hungarian" country="Hungary"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="is" language="Icelandic">
+      <CultureLanguageCountry name="is-IS" language="Icelandic" country="Iceland"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="id" language="Indonesian">
+      <CultureLanguageCountry name="id-ID" language="Indonesian" country="Indonesia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="it" language="Italian">
+      <CultureLanguageCountry name="it-IT" language="Italian" country="Italy"/>
+      <CultureLanguageCountry name="it-CH" language="Italian" country="Switzerland"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="ja" language="Japanese">
+      <CultureLanguageCountry name="ja-JP" language="Japanese" country="Japan"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="kn" language="Kannada">
+      <CultureLanguageCountry name="kn-IN" language="Kannada" country="India"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="kk" language="Kazakh">
+      <CultureLanguageCountry name="kk-KZ" language="Kazakh" country="Kazakhstan"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="kok" language="Konkani">
+      <CultureLanguageCountry name="kok-IN" language="Konkani" country="India"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="ko" language="Korean">
+      <CultureLanguageCountry name="ko-KR" language="Korean" country="Korea"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="ky" language="Kyrgyz">
+      <CultureLanguageCountry name="ky-KG" language="Kyrgyz" country="Kyrgyzstan"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="lv" language="Latvian">
+      <CultureLanguageCountry name="lv-LV" language="Latvian" country="Latvia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="lt" language="Lithuanian">
+      <CultureLanguageCountry name="lt-LT" language="Lithuanian" country="Lithuania"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="mk" language="Macedonian">
+      <CultureLanguageCountry name="mk-MK" language="Macedonian" country="Macedonia, FYROM"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="ms" language="Malay">
+      <CultureLanguageCountry name="ms-BN" language="Malay" country="Brunei Darussalam"/>
+      <CultureLanguageCountry name="ms-MY" language="Malay" country="Malaysia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="mr" language="Marathi">
+      <CultureLanguageCountry name="mr-IN" language="Marathi" country="India"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="mn" language="Mongolian">
+      <CultureLanguageCountry name="mn-MN" language="Mongolian" country="Mongolia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="no" language="Norwegian">
+      <CultureLanguageCountry name="nb-NO" language="Norwegian" country="Bokmål, Norway"/>
+      <CultureLanguageCountry name="nn-NO" language="Norwegian" country="Nynorsk, Norway"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="pl" language="Polish">
+      <CultureLanguageCountry name="pl-PL" language="Polish" country="Poland"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="pt" language="Portuguese">
+      <CultureLanguageCountry name="pt-BR" language="Portuguese" country="Brazil"/>
+      <CultureLanguageCountry name="pt-PT" language="Portuguese" country="Portugal"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="pa" language="Punjabi">
+      <CultureLanguageCountry name="pa-IN" language="Punjabi" country="India"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="ro" language="Romanian">
+      <CultureLanguageCountry name="ro-RO" language="Romanian" country="Romania"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="ru" language="Russian">
+      <CultureLanguageCountry name="ru-RU" language="Russian" country="Russia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="sa" language="Sanskrit">
+      <CultureLanguageCountry name="sa-IN" language="Sanskrit" country="India"/>
+    </CultureLanguage>
+
+    <Country name="Serbia">
+      <CultureLanguageArea name="sr-Cyrl-CS" language="Serbian" area="Serbia, Cyrillic"/>
+      <CultureLanguageArea name="sr-Latn-CS" language="Serbian" area ="Serbia, Latin"/>
+    </Country>
+
+    <CultureLanguage name="sk" language="Slovak">
+      <CultureLanguageCountry name="sk-SK" language="Slovak" country="Slovakia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="sl" language="Slovenian">
+      <CultureLanguageCountry name="sl-SI" language="Slovenian" country="Slovenia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="es" language="Spanish">
+      <CultureLanguageCountry name="es-AR" language="Spanish" country="Argentina"/>
+      <CultureLanguageCountry name="es-BO" language="Spanish" country="Bolivia"/>
+      <CultureLanguageCountry name="es-CL" language="Spanish" country="Chile"/>
+      <CultureLanguageCountry name="es-CO" language="Spanish" country="Colombia"/>
+      <CultureLanguageCountry name="es-CR" language="Spanish" country="Costa Rica"/>
+      <CultureLanguageCountry name="es-DO" language="Spanish" country="Dominican Republic"/>
+      <CultureLanguageCountry name="es-EC" language="Spanish" country="Ecuador"/>
+      <CultureLanguageCountry name="es-SV" language="Spanish" country="El Salvador"/>
+      <CultureLanguageCountry name="es-GT" language="Spanish" country="Guatemala"/>
+      <CultureLanguageCountry name="es-HN" language="Spanish" country="Honduras"/>
+      <CultureLanguageCountry name="es-MX" language="Spanish" country="Mexico"/>
+      <CultureLanguageCountry name="es-NI" language="Spanish" country="Nicaragua"/>
+      <CultureLanguageCountry name="es-PA" language="Spanish" country="Panama"/>
+      <CultureLanguageCountry name="es-PY" language="Spanish" country="Paraguay"/>
+      <CultureLanguageCountry name="es-PE" language="Spanish" country="Peru"/>
+      <CultureLanguageCountry name="es-PR" language="Spanish" country="Puerto Rico"/>
+      <CultureLanguageCountry name="es-ES" language="Spanish" country="Spain"/>
+      <CultureLanguageCountry name="es-ES_tradnl" language="Span" country="Span, Traditional Sort"/>
+      <CultureLanguageCountry name="es-UY" language="Spanish" country="Uruguay"/>
+      <CultureLanguageCountry name="es-VE" language="Spanish" country="Venezuela"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="sw" language="Swahili">
+      <CultureLanguageCountry name="sw-KE" language="Swahili" country="Kenya"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="sv" language="Swedish">
+      <CultureLanguageCountry name="sv-FI" language="Swedish" country="Finland"/>
+      <CultureLanguageCountry name="sv-SE" language="Swedish" country="Sweden"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="syr" language="Syriac">
+      <CultureLanguageCountry name="syr-SY" language="Syriac" country="Syria"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="ta" language="Tamil">
+      <CultureLanguageCountry name="ta-IN" language="Tamil" country="India"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="tt" language="Tatar">
+      <CultureLanguageCountry name="tt-RU" language="Tatar" country="Russia"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="te" language="Telugu">
+      <CultureLanguageCountry name="te-IN" language="Telugu" country="India"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="th" language="Thai">
+      <CultureLanguageCountry name="th-TH" language="Thai" country="Thailand"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="tr" language="Turkish">
+      <CultureLanguageCountry name="tr-TR" language="Turkish" country="Turkey"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="uk" language="Ukrainian">
+      <CultureLanguageCountry name="uk-UA" language="Ukrainian" country="Ukraine"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="ur" language="Urdu">
+      <CultureLanguageCountry name="ur-PK" language="Urdu" country="Pakistan"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="uz" language="Uzbek">
+      <CultureLanguageCountry name="uz-Cyrl-UZ" language="Uzbek" country="Uzbekistan, Cyrillic"/>
+      <CultureLanguageCountry name="uz-Latn-UZ" language="Uzbek" country="Uzbekistan, Latin"/>
+    </CultureLanguage>
+
+    <CultureLanguage name="vi" language="Vietnamese">
+      <CultureLanguageCountry name="vi-VN" language="Vietnamese" country="Vietnam"/>
+    </CultureLanguage>
+  </Cultures>
+</CultureInfo>

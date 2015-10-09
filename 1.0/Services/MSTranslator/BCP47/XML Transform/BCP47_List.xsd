@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified"          
+           targetNamespace="https://locult.codeplex.com/CultureInfo.xsd">
+  <xsd:element name="CultureInfo">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Comment" type="xsd:string" />
+        <xsd:element name="Cultures">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:choice maxOccurs="unbounded">
+                <xsd:element maxOccurs="unbounded" name="CultureLanguage">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element maxOccurs="unbounded" name="CultureLanguageCountry">
+                        <xsd:complexType>
+                          <xsd:attribute name="name" type="xsd:string" use="required" />
+                          <xsd:attribute name="language" type="xsd:string" use="required" />
+                          <xsd:attribute name="country" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                      </xsd:element>
+                    </xsd:sequence>
+                    <xsd:attribute name="name" type="xsd:string" use="required" />
+                    <xsd:attribute name="language" type="xsd:string" use="required" />
+                  </xsd:complexType>
+                </xsd:element>
+
+                <xsd:element name="Country">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element maxOccurs="unbounded" name="CultureLanguageArea">
+                        <xsd:complexType>
+                          <xsd:attribute name="name" type="xsd:string" use="required" />
+                          <xsd:attribute name="language" type="xsd:string" use="required" />
+                          <xsd:attribute name="area" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                      </xsd:element>
+                    </xsd:sequence>
+                    <xsd:attribute name="name" type="xsd:string" use="required" />
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:choice>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="Version" type="xsd:string" use="required" />
+    </xsd:complexType>
+  </xsd:element>
+</xs:schema>

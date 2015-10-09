@@ -1,0 +1,111 @@
+﻿<Application x:Class="LocultMetro.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:conv="clr-namespace:LocultApp.Converter;assembly=LocultApp"
+             xmlns:vm="clr-namespace:LocultApp.ViewModels;assembly=LocultApp"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Startup="Application_Startup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/LocultApp;component/Views/Pages/SettingsPages/DataTemplates.xaml"/>
+                <ResourceDictionary Source="/LocultApp;component/Themes/GenericIcons.xaml" />
+                <ResourceDictionary Source="/LocultApp;component/Images/MetroLightIcons.xaml" />
+
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Button.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Calendar.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/CheckBox.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ComboBox.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ContextMenu.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/DataGrid.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/DatePicker.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/GridSplitter.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Hyperlink.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Label.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ListBox.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ListView.xaml" />
+                <!-- ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernProgressRingStyles.xaml" / -->
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/MenuItem.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/PasswordBox.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ProgressBar.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/RadioButton.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ScrollBar.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/Slider.xaml" />
+
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/TextBox.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ToolTip.xaml" />
+                <!-- see issue at MUI GitHub site -->
+
+                <!-- ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernWindowStyles.xaml" / -->
+                <ResourceDictionary Source="/LocultMetro;component/Themes/Styles/ModernWindowStyles.xaml" />
+                
+                <!-- ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.Dark.xaml" / -->
+                
+                <!-- ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/TextBlock.xaml" / -->
+                <ResourceDictionary Source="/LocultMetro;component/Themes/Controls/TextBlock.xaml" />
+                <ResourceDictionary Source="/LocultMetro;component/Themes/Controls/TabControl.xaml" />
+                <ResourceDictionary Source="/LocultMetro;component/Themes/Controls/GroupBox.xaml" />
+                
+                <!-- ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/TreeView.xaml" / -->
+                <ResourceDictionary Source="/LocultMetro;component/Themes/Controls/TreeView.xaml" />
+                <!-- see issue at MUI GitHub site -->
+                <!-- ResourceDictionary Source="/LocultMetro;component/Themes/ModernUILightBrushes.xaml" / Dark brushes are further below in this file -->
+                <ResourceDictionary Source="/FolderBrowser;component/Images/GenericIcons.xaml" />
+
+                <!-- ResourceDictionary Source="/LocultApp;component/Views/Pages/SettingsPages/DataTemplates.xaml"/>
+                <ResourceDictionary Source="/LocultApp;component/Themes/GenericIcons.xaml" />
+                <ResourceDictionary Source="/LocultApp;component/Images/MetroLight/Documents/MetroLightIcons.xaml" />
+                <ResourceDictionary Source="/LocultMetro;component/Themes/TextBlock.xaml" />
+                - DropDownButtonLib;component/Themes/MetroDark.xaml -
+                <ResourceDictionary Source="/DropDownButtonLib;component/Themes/MetroLight.xaml"/>
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.xaml" />
+                <ResourceDictionary Source="/LocultMetro;component/Themes/ModernWindowStyles.xaml" />
+                <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.Light.xaml" / -->
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Style TargetType="{x:Type Control}" x:Key="baseStyle">
+                <Setter Property="FontSize" Value="{Binding Source={x:Static vm:AppViewModel.AppFontSize}, UpdateSourceTrigger=PropertyChanged}" />
+            </Style -->
+            <!--            <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type TreeView}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ContentControl}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ToolBar}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ToolTip}" BasedOn="{StaticResource baseStyle}"/>
+-->
+            <!-- Minimal MUI implementation -->
+            <Thickness x:Key="ContentMargin">16,28,16,16</Thickness>
+
+            <Style x:Key="ContentRoot" TargetType="FrameworkElement">
+                <Setter Property="Margin" Value="{StaticResource ContentMargin}" />
+            </Style>
+
+            <BitmapImage UriSource="/LocultApp;component/Images/TypeOfDiffState/SourceOnly32.png" x:Key="IconImage_SourceOnly" />
+            <BitmapImage UriSource="/LocultApp;component/Images/TypeOfDiffState/TargetOnly32.png" x:Key="IconImage_TargetOnly" />
+            <BitmapImage UriSource="/LocultApp;component/Images/TypeOfDiffState/TargetAndSource32.png" x:Key="IconImage_SourceAndTarget" />
+
+            <DataTemplate x:Key="LanguageDataTemplate">
+                <TextBlock>
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{conv:LangCodesToStringMultiValueConverter}">
+                            <Binding Path="Bcp47_LangCode" />
+                            <Binding Path="Language" />
+                            <Binding Path="Area" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

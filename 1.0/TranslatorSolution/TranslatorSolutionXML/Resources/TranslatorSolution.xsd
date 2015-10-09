@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ApplicationSettings"
+    targetNamespace="https://locult.codeplex.com/TranslatorSolution.xsd"
+    elementFormDefault="qualified"
+    xmlns="https://locult.codeplex.com/TranslatorSolution.xsd"
+    xmlns:mstns="https://locult.codeplex.com/TranslatorSolution.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+  <!--
+  Use this command line to generate a natching poco class (xsd.exe must be in your path to make this work):
+  xsd "xsd "TranslatorSolution.xsd" /c /n:TranslatorSolutionLib.XMLModels /out:"C:\Temp"
+  
+  Follow this entry to create the required code for reading and writing XML:
+  http://blog.icanmakethiswork.io/2012/11/xsdxml-schema-generator-xsdexe-taking.html
+  -->
+
+  <!-- Define type of XML Tag: File (element) -->
+  <xs:complexType name="FILE_TAG">
+    <xs:sequence>
+      <xs:element name="Path"  type="xs:string"  minOccurs="0" maxOccurs="1" />
+      <xs:element name="Type"  type="xs:string"  minOccurs="0" maxOccurs="1" />
+      <xs:element name="Comment"  type="xs:string"  minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Define type of XML Tag: Project (element) -->
+  <xs:complexType name="PROJECT_TAG">
+    <xs:sequence>
+      <xs:element name="SourceFile"  type="FILE_TAG" minOccurs="1" maxOccurs="1" />
+
+      <xs:element name="TargetFiles"  type="FILE_TAG" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="TranslatorSolution">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Name"  type="xs:string"  minOccurs="0" maxOccurs="1" />
+        <xs:element name="Comment"  type="xs:string"  minOccurs="0" maxOccurs="1" />
+
+        <xs:element name="Project"  type="PROJECT_TAG" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+
+      <!-- Store the version of the program that was used to create this XML file -->
+      <xs:attribute name="Version" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--
+            Version must start with a "1." and be followed by 2 digits
+            seperated with points eg: "1.00.00"
+            -->
+            <xs:pattern value="1\.\d{2,2}\.\d{2,2}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+
+  </xs:element>
+</xs:schema>

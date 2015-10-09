@@ -1,0 +1,69 @@
+﻿<Application x:Class="Locult.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:conv="clr-namespace:LocultApp.Converter;assembly=LocultApp"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:vm="clr-namespace:LocultApp.ViewModels;assembly=LocultApp"
+             Startup="Application_Startup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/LocultApp;component/Themes/GenericIcons.xaml" />
+                <ResourceDictionary Source="/LocultApp;component/Images/MetroLightIcons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="Heading1" TargetType="TextBlock">
+                <!-- Setter Property="FontFamily" Value="Segoe UI" / -->
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            </Style>
+
+            <!-- Setup font size in all generic theme based controls used in this application
+            <Style TargetType="{x:Type Control}" x:Key="baseStyle">
+                <Setter Property="FontSize" Value="{Binding Source={x:Static vm:AppViewModel.AppFontSize}, UpdateSourceTrigger=PropertyChanged}" />
+            </Style>
+            <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type TreeView}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ContentControl}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ToolBar}" BasedOn="{StaticResource baseStyle}"/>
+            <Style TargetType="{x:Type ToolTip}" BasedOn="{StaticResource baseStyle}"/>
+ -->
+            <BitmapImage UriSource="/LocultApp;component/Images/TypeOfDiffState/SourceOnly32.png" x:Key="IconImage_SourceOnly" />
+            <BitmapImage UriSource="/LocultApp;component/Images/TypeOfDiffState/TargetOnly32.png" x:Key="IconImage_TargetOnly" />
+            <BitmapImage UriSource="/LocultApp;component/Images/TypeOfDiffState/TargetAndSource32.png" x:Key="IconImage_SourceAndTarget" />
+
+            <DataTemplate x:Key="LanguageDataTemplate">
+                <TextBlock>
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{conv:LangCodesToStringMultiValueConverter}">
+                            <Binding Path="Bcp47_LangCode" />
+                            <Binding Path="Language" />
+                            <Binding Path="Area" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </DataTemplate>
+
+            <!-- Minimal MUI implementation -->
+            <Thickness x:Key="ContentMargin">16,28,16,16</Thickness>
+
+            <Style x:Key="ContentRoot" TargetType="FrameworkElement">
+                <Setter Property="Margin" Value="{StaticResource ContentMargin}" />
+            </Style>
+
+            <SolidColorBrush x:Key="Accent" Color="{Binding x:Static SystemColors.ControlBrushKey}" />
+        </ResourceDictionary>
+  </Application.Resources>
+</Application>

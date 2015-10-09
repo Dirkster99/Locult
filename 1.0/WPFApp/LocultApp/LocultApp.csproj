@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{860BB124-47A5-4C7F-B610-A466593136B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LocultApp</RootNamespace>
+    <AssemblyName>LocultApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DropDownButtonLib">
+      <HintPath>..\..\01_Binaries\DropDownButtonLib.dll</HintPath>
+    </Reference>
+    <Reference Include="FolderBrowser">
+      <HintPath>..\..\01_Binaries\FileSystemControls\FolderBrowser.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\Binaries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MsgBox">
+      <HintPath>..\..\Binaries\MsgBox\MsgBox.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SettingsModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\SettingsModel\SettingsModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WPFProcessingLib">
+      <HintPath>..\..\01_Binaries\WPFProcessingLib\WPFProcessingLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppCore.cs" />
+    <Compile Include="Behaviours\BindingProxy .cs" />
+    <Compile Include="Behaviours\DataGridMultipleSelection.cs" />
+    <Compile Include="Behaviours\DialogCloser.cs" />
+    <Compile Include="Behaviours\MergeStyleBehaviour.cs" />
+    <Compile Include="Behaviours\PasswordBoxTextChanged.cs" />
+    <Compile Include="Behaviours\SelectedItem.cs" />
+    <Compile Include="Behaviours\SelectedItemChanged.cs" />
+    <Compile Include="Behaviours\TextBoxKeyEntered.cs" />
+    <Compile Include="Behaviours\TextBoxTextChanged.cs" />
+    <Compile Include="Behaviours\TreeViewItemBehaviour.cs" />
+    <Compile Include="Behaviours\TreeViewSelectionChangedBehavior.cs" />
+    <Compile Include="Controls\Exception\ExceptionView.xaml.cs">
+      <DependentUpon>ExceptionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Exception\ExceptionViewModel.cs" />
+    <Compile Include="Controls\Exception\ICanDisplayException.cs" />
+    <Compile Include="Controls\Exception\ICanForwardExceptionsToDisplay.cs" />
+    <Compile Include="Controls\Exception\IExceptionViewModel.cs" />
+    <Compile Include="Controls\Solution\Base\UpdateTargetFilesBaseViewModel.cs" />
+    <Compile Include="Controls\Solution\UpdateNewSolutionTargetFilesViewModel.cs" />
+    <Compile Include="Controls\Solution\UpdateProjectTargetFilesViewModel.cs" />
+    <Compile Include="Controls\Solution\UpdateTargetFilesView.xaml.cs">
+      <DependentUpon>UpdateTargetFilesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\AlternateColorConverter.cs" />
+    <Compile Include="Converter\BoolToVisibilityConverter .cs" />
+    <Compile Include="Converter\EmptyStringToNullConverter.cs" />
+    <Compile Include="Converter\InverseBooleanConverter.cs" />
+    <Compile Include="Converter\LangCodesToStringMultiValueConverter.cs" />
+    <Compile Include="Converter\MuliParametersConverter.cs" />
+    <Compile Include="Converter\MultivalueNullableBoolToVisibilityConverter.cs" />
+    <Compile Include="Converter\SelectItemCountToBooleanConverter.cs" />
+    <Compile Include="Converter\SolutionItemEnumToImage.cs" />
+    <Compile Include="Converter\TypeOfDiffToImageConverter.cs" />
+    <Compile Include="Converter\TypeOfDiffToStringConverter.cs" />
+    <Compile Include="Converter\UpperCaseDateConverter.cs" />
+    <Compile Include="ExtensionMethods\SecureStringExtensionMethod.cs" />
+    <Compile Include="Local\Strings.de-DE.Designer.cs">
+      <DependentUpon>Strings.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Local\Strings.Designer.cs">
+      <DependentUpon>Strings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\BCP_47.cs" />
+    <Compile Include="Models\Entry.cs" />
+    <Compile Include="Models\EntryDiffModel.cs" />
+    <Compile Include="Models\TypeOfDiffEnum.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceInjector.cs" />
+    <Compile Include="ViewModels\AppLifeCycleViewModel.cs" />
+    <Compile Include="ViewModels\AppViewModel.cs" />
+    <Compile Include="ViewModels\Base\RelayCommand.cs" />
+    <Compile Include="ViewModels\Base\ViewModelBase.cs" />
+    <Compile Include="ViewModels\Events\ApplicationRequestEvent.cs" />
+    <Compile Include="ViewModels\Events\IRequestAction.cs" />
+    <Compile Include="ViewModels\IDocumentCollection.cs" />
+    <Compile Include="ViewModels\IProcessItems.cs" />
+    <Compile Include="ViewModels\Pages\EditPageDocuments\Base\DocumentViewModelBase.cs" />
+    <Compile Include="ViewModels\Pages\EditPageDocuments\Base\Events\DocumentDirtyChangedEventArgs.cs" />
+    <Compile Include="ViewModels\Pages\EditPageDocuments\Base\Events\DocumentDirtyChangedViewModelBase.cs" />
+    <Compile Include="ViewModels\Pages\EditPageDocuments\Base\Interfaces\IDefaultPath.cs" />
+    <Compile Include="ViewModels\Pages\EditPageDocuments\Base\Interfaces\IDocumentBase.cs" />
+    <Compile Include="ViewModels\Pages\EditPageDocuments\Base\Interfaces\IDocumentDirtyChangedBase.cs" />
+    <Compile Include="ViewModels\Pages\EditPageDocuments\Base\Interfaces\IEditDocument.cs" />
+    <Compile Include="ViewModels\Pages\EditPageDocuments\EditProjectDocumentViewModel.cs" />
+    <Compile Include="ViewModels\Pages\EditPageDocuments\EditSolutionDocumentViewModel.cs" />
+    <Compile Include="ViewModels\Pages\EditPageDocuments\EditTranslationsDocumentViewModel.cs" />
+    <Compile Include="ViewModels\Pages\EditPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\Interfaces\IDocumentCanUnload.cs" />
+    <Compile Include="ViewModels\Interfaces\IPageManagerViewModel.cs" />
+    <Compile Include="ViewModels\Pages\PageBaseViewModel.cs" />
+    <Compile Include="ViewModels\Pages\PageManagerViewModel.cs" />
+    <Compile Include="ViewModels\Pages\SettingsPages\AboutViewModel.cs" />
+    <Compile Include="ViewModels\Pages\SettingsPages\EditBookmarksViewModel.cs" />
+    <Compile Include="ViewModels\Pages\SettingsPages\GeneralSettingsViewModel.cs" />
+    <Compile Include="ViewModels\Pages\SettingsPages\SettingsDefaults.cs" />
+    <Compile Include="ViewModels\Pages\SettingsPages\SettingsPageBaseViewModel.cs" />
+    <Compile Include="ViewModels\Pages\SettingsPages\SettingsTemplateSelector.cs" />
+    <Compile Include="ViewModels\Pages\SettingsPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\StartPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\StartPage\NewSolutionViewModel.cs" />
+    <Compile Include="ViewModels\Pages\StartPage\OpenSolutionViewModel.cs" />
+    <Compile Include="ViewModels\Pages\StartPage\StartPageSolutionViewModel.cs" />
+    <Compile Include="ViewModels\StringSource\EntryDiffViewModel.cs" />
+    <Compile Include="ViewModels\StringSource\IEntryDiffViewModelParent.cs" />
+    <Compile Include="ViewModels\StringSource\IStringCollectionDiffViewModelParent.cs" />
+    <Compile Include="ViewModels\StringSource\StringCollectionDiffViewModel.cs" />
+    <Compile Include="ViewModels\StringSource\StringCollectionViewModel.cs" />
+    <Compile Include="Views\Pages\EditPage.xaml.cs">
+      <DependentUpon>EditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\EditPageDocuments\EditProjectDocumentView.xaml.cs">
+      <DependentUpon>EditProjectDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\EditPageDocuments\EditSolutionDocumentView.xaml.cs">
+      <DependentUpon>EditSolutionDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\EditPageDocuments\EditTranslationDocumentView.xaml.cs">
+      <DependentUpon>EditTranslationDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SettingsPages\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SettingsPages\EditBookmarksView.xaml.cs">
+      <DependentUpon>EditBookmarksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SettingsPages\GeneralSettingsView.xaml.cs">
+      <DependentUpon>GeneralSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\StartPageView.xaml.cs">
+      <DependentUpon>StartPageView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\Exception\ExceptionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Solution\UpdateTargetFilesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Images\MetroDarkIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Images\MetroLightIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\DarkIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\GenericIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\LightIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\EditPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\EditPageDocuments\EditProjectDocumentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\EditPageDocuments\EditSolutionDocumentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\EditPageDocuments\EditTranslationDocumentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\SettingsPages\About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\SettingsPages\EditBookmarksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\SettingsPages\GeneralSettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\SettingsPages\DataTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\StartPageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Message\Generic\48px-Dialog-error.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Message\Metro\Dark\appbar.sign.stop.png" />
+    <EmbeddedResource Include="Local\Strings.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.de-DE.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Local\Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Message\Metro\Light\appbar.sign.stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\appbar.snowflake.png" />
+    <None Include="Icons\appbar.snowflake.svg" />
+    <Resource Include="Icons\appbar.snowflake_128.png" />
+    <Resource Include="Icons\appbar.snowflake_32.png" />
+    <Resource Include="Icons\appbar.snowflake_48.png" />
+    <Resource Include="Icons\appbar.snowflake_64.png" />
+    <Resource Include="Icons\appbar.snowflake_48_dark.png" />
+    <Content Include="Images\Message\Metro\SVG\appbar.stop.svg" />
+    <Resource Include="Images\MetroDark\appbar.layer.add.png" />
+    <Resource Include="Images\MetroDark\appbar.page.bold.png" />
+    <Resource Include="Images\MetroDark\appbar.page.copy.png" />
+    <Content Include="Images\MetroLight\Documents\SVG\appbar.layer.add.svg" />
+    <Content Include="Images\MetroLight\Documents\SVG\appbar.page.bold.svg" />
+    <Content Include="Images\MetroLight\Documents\SVG\appbar.page.copy.svg" />
+    <Content Include="Images\TypeOfDiffState\TypeOfDiffStateImage.svg" />
+    <Resource Include="Images\TypeOfDiffState\TargetOnly32.png" />
+    <Resource Include="Images\TypeOfDiffState\TargetOnly16.png" />
+    <Resource Include="Images\TypeOfDiffState\TargetAndSource32.png" />
+    <Resource Include="Images\TypeOfDiffState\TargetAndSource16.png" />
+    <Resource Include="Images\TypeOfDiffState\SourceOnly32.png" />
+    <Resource Include="Images\TypeOfDiffState\SourceOnly16.png" />
+    <Resource Include="Images\MetroLight\Documents\candidates\appbar.newspaper.png" />
+    <Resource Include="Images\MetroLight\Documents\candidates\appbar.diagram.png" />
+    <Resource Include="Images\MetroLight\Documents\candidates\appbar.column.one.png" />
+    <Resource Include="Images\MetroLight\Documents\candidates\appbar.clipboard.variant.text.png" />
+    <Resource Include="Images\MetroLight\Documents\appbar.page.copy.png" />
+    <Resource Include="Images\MetroLight\Documents\appbar.page.bold.png" />
+    <Resource Include="Images\MetroLight\Documents\appbar.layer.add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services\AppResourcesLib\AppResourcesLib.csproj">
+      <Project>{94dda1c1-e852-425f-be65-aad909ec9027}</Project>
+      <Name>AppResourcesLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\ResourceFileLib\ResourceFileLib.csproj">
+      <Project>{253f5da8-d87e-44f3-acc8-9c3c0bc451bf}</Project>
+      <Name>ResourceFileLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\ServiceLocatorInterfaces\ServiceLocatorInterfaces.csproj">
+      <Project>{98320c6f-d378-4c7b-a7a1-df3ff9aec130}</Project>
+      <Name>ServiceLocatorInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\ExplorerLib\ExplorerLib.csproj">
+      <Project>{c1d141f7-4962-45f3-9eda-a7900deed1c7}</Project>
+      <Name>ExplorerLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\MSTranslator\MSTranslate.csproj">
+      <Project>{51e90a64-b4ed-4214-b2ec-60dcd74cb36d}</Project>
+      <Name>MSTranslate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\ServiceLocator\ServiceLocator.csproj">
+      <Project>{1d2b2142-67d7-48ea-91f9-5e77e29b5ab9}</Project>
+      <Name>ServiceLocator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Settings\Settings.csproj">
+      <Project>{2807b493-cc2e-402e-901a-eb138698fedc}</Project>
+      <Name>Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TranslationSolutionViewModelLib\TranslationSolutionViewModelLib.csproj">
+      <Project>{5f43e1bd-d9fb-455d-a304-f35b2f33f4bd}</Project>
+      <Name>TranslationSolutionViewModelLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TranslatorSolution\TranslatorSolutionModel\TranslatorSolutionLib.csproj">
+      <Project>{cdb0df03-8e2c-4a7d-a457-66549415407f}</Project>
+      <Name>TranslatorSolutionLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DesignOverview.cd" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

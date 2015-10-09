@@ -1,0 +1,895 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SettingsModel</name>
+    </assembly>
+    <members>
+        <member name="T:SettingsModel.ExtensionMethods.SecureStringExtensionMethod">
+            <summary>
+            Source: http://blogs.msdn.com/b/fpintos/archive/2009/06/12/how-to-properly-convert-securestring-to-string.aspx
+            </summary>
+        </member>
+        <member name="T:SettingsModel.Interfaces.IOptionsSchema">
+            <summary>
+            Defines available schema information for 1 option.
+            </summary>
+        </member>
+        <!-- Ungültiger XML-Kommentar wurde für den Member "M:SettingsModel.Interfaces.IOptionsSchema.List_Remove(System.String)" ignoriert -->
+        <!-- Ungültiger XML-Kommentar wurde für den Member "M:SettingsModel.Interfaces.IOptionsSchema.List_TryGetValue(System.String,System.Object@)" ignoriert -->
+        <member name="M:SettingsModel.Interfaces.IOptionsSchema.SetValue(System.Object)">
+            <summary>
+            Sets the value of a given option in this option object.
+            </summary>
+            <param name="outresult"></param>
+            <returns>true if data actually changed (for dirty state tracking).
+            Otherwise, false if requested value was already present.</returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionsSchema.List_AddValue(System.String,System.Object)">
+            <summary>
+            Add a list item in a list schema
+            </summary>
+            <param name="newValue"></param>
+            <returns>
+            Returns true if item was succesfully added or false
+            if schema is not a list schema.
+            </returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionsSchema.List_Clear">
+            <summary>
+            Clear all items contained in a list.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionsSchema.List_GetListOfValues">
+            <summary>
+            Gets a list of current values if this schema descripes a List.
+            Return a single value schema as a list of 1 item.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionsSchema.List_GetListOfKeyValues">
+            <summary>
+            Gets a list of current keys and values if this schema
+            descripes a List.
+            
+            Return a single value schema as a list of 1 item.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SettingsModel.Interfaces.IOptionsSchema.OptionName">
+            <summary>
+            Gets the name of an option.
+            </summary>
+        </member>
+        <member name="P:SettingsModel.Interfaces.IOptionsSchema.TypeOfValue">
+            <summary>
+            Gets the type of the option being defined here.
+            </summary>
+        </member>
+        <member name="P:SettingsModel.Interfaces.IOptionsSchema.IsOptional">
+            <summary>
+            Gets whether this options is optional or required.
+            This is important when perisiting data and when reading
+            data from persistance.
+            </summary>
+        </member>
+        <member name="P:SettingsModel.Interfaces.IOptionsSchema.Value">
+            <summary>
+            Gets the value of this option.
+            </summary>
+        </member>
+        <member name="P:SettingsModel.Interfaces.IOptionsSchema.DefaultValue">
+            <summary>
+            Gets/sets the default value of this option.
+            </summary>
+        </member>
+        <member name="T:SettingsModel.OptionsEngine">
+            <summary>
+            Defines an interface to an object that implements an OptionsGroup/Options management engine.
+            Thats an engine that keeps track of simple options like 'Reload files from last session (checkbox)',
+            has means to define them, show their state when asked, and can store and retrive options in XML.
+            </summary>
+        </member>
+        <member name="T:SettingsModel.Interfaces.IEngine">
+            <summary>
+            Defines an interface to an object that implements an OptionsGroup/Options management engine.
+            Thats an engine that keeps track of simple options like 'Reload files from last session (checkbox)',
+            has means to define them, show their state when asked, and can store and retrive options in XML.
+            </summary>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IEngine.AddOption(System.String,System.String,System.Type,System.Boolean,System.Object)">
+            <summary>
+            Adds a new <paramref name="optionName"/> option into an existing option group
+            or creates a new option group (if <paramref name="nameOfOptionGroup"/> does not
+            exist yet) with one option as requested per <paramref name="optionName"/> parameter.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <param name="optionName"></param>
+            <param name="type"></param>
+            <param name="isOptional"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IEngine.AddListOption``1(System.String,System.String,System.Type,System.Boolean,System.Collections.Generic.List{``0})">
+            <summary>
+            Adds a new <paramref name="optionName"/> option into an existing option group
+            and list or creates a new option group (if <paramref name="nameOfOptionGroup"/> does not
+            exist yet) with a list option as requested per <paramref name="optionName"/> parameter.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="nameOfOptionGroup"></param>
+            <param name="optionName"></param>
+            <param name="type"></param>
+            <param name="isOptional"></param>
+            <param name="list"></param>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IEngine.GetOptionValue(System.String,System.String,System.Object@)">
+            <summary>
+            Gets the value of an option in a given <seealso cref="T:SettingsModel.OptionGroup"/> or null
+            if either option or <seealso cref="T:SettingsModel.OptionGroup"/> does not exist.
+            
+            Method returns false if option and <seealso cref="T:SettingsModel.OptionGroup"/> are not known.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <param name="optionName"></param>
+            <param name="optValue">Indicates whether option and <seealso cref="T:SettingsModel.OptionGroup"/> exist or not.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IEngine.GetOptionValue(System.String,System.String)">
+            <summary>
+            Gets the value of an option in a given <seealso cref="T:SettingsModel.OptionGroup"/> or
+            throws an exception if either option or <seealso cref="T:SettingsModel.OptionGroup"/>
+            does not exist.
+            
+            Method the requested option value if option and <seealso cref="T:SettingsModel.OptionGroup"/> are known.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <!-- Ungültiger XML-Kommentar wurde für den Member "M:SettingsModel.Interfaces.IEngine.GetOptionValue``1(System.String,System.String)" ignoriert -->
+        <member name="M:SettingsModel.Interfaces.IEngine.GetOptionGroups">
+            <summary>
+            Iterates through all <seealso cref="T:SettingsModel.Interfaces.IOptionGroup"/> items stored in this object
+            and gets each of these items at a time.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IEngine.GetOptionGroup(System.String)">
+            <summary>
+            Gets a set of option grouped in 1 object for simplified access.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IEngine.WriteXML(System.String)">
+            <summary>
+            Store option groups and their values in an XML file.
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IEngine.ReadXML(System.String)">
+            <summary>
+            Read option groups and their values from an XML file.
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IEngine.ReadXML(System.IO.TextReader)">
+            <summary>
+            Use this class to read XML from strings via <seealso cref="T:System.IO.StringReader"/>.
+            </summary>
+            <param name="reader"></param>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IEngine.SetUndirty">
+            <summary>
+            Resets the IsDirty flag to false to indicate that the current
+            data was not changed/edited by a user request, yet. This is
+            useful after defining a new options model and starting to work
+            with it, as well, as after reading options from persistance...
+            </summary>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IEngine.RemoveOptionsGroup(System.String)">
+            <summary>
+            Remove a complete options group from the current model
+            (this will remove multiple settings at once). Use with extreem care.
+            Calling this methid is normally not required but the function is
+            provided for completeness.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IEngine.RemoveOption(System.String,System.String)">
+            <summary>
+            Remove an option from the current model
+            (this will remove multiple values at once if the
+            requested option referes to a list of option values).
+            
+            Use with extreem care.
+            Calling this method is normally not required but
+            the function is provided for completeness.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SettingsModel.Interfaces.IEngine.IsDirty">
+            <summary>
+            Gets whether any of the properties stored in any options group have changed or not.
+            </summary>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.#ctor">
+            <summary>
+            Class constructor
+            </summary>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.Equals(System.Object)">
+            <summary>
+            Determines whether the specified System.Object is equal to the current System.Object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns>
+            true if the specified System.Object is equal to the current System.Object;
+            otherwise, false.
+            </returns>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.AddOption(System.String,System.String,System.Type,System.Boolean,System.Object)">
+            <summary>
+            Adds a new <paramref name="optionName"/> option into an existing option group
+            or creates a new option group (if <paramref name="nameOfOptionGroup"/> does not
+            exist yet) with one option as requested per <paramref name="optionName"/> parameter.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <param name="optionName"></param>
+            <param name="type"></param>
+            <param name="isOptional"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.AddListOption``1(System.String,System.String,System.Type,System.Boolean,System.Collections.Generic.List{``0})">
+            <summary>
+            Adds a new <paramref name="optionName"/> option into an existing option group
+            and list or creates a new option group (if <paramref name="nameOfOptionGroup"/> does not
+            exist yet) with a list option as requested per <paramref name="optionName"/> parameter.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="nameOfOptionGroup"></param>
+            <param name="optionName"></param>
+            <param name="type"></param>
+            <param name="isOptional"></param>
+            <param name="list"></param>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.GetOptionValue(System.String,System.String,System.Object@)">
+            <summary>
+            Gets the value of an option in a given <seealso cref="T:SettingsModel.OptionGroup"/> or null
+            if either option or <seealso cref="T:SettingsModel.OptionGroup"/> does not exist.
+            
+            Method returns false if option and <seealso cref="T:SettingsModel.OptionGroup"/> are not known.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <param name="optionName"></param>
+            <param name="optValue">Indicates whether option and <seealso cref="T:SettingsModel.OptionGroup"/> exist or not.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.GetOptionValue(System.String,System.String)">
+            <summary>
+            Gets the value of an option in a given <seealso cref="T:SettingsModel.OptionGroup"/> or
+            throws an exception if either option or <seealso cref="T:SettingsModel.OptionGroup"/>
+            does not exist.
+            
+            Method the requested option value if option and <seealso cref="T:SettingsModel.OptionGroup"/> are known.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <!-- Ungültiger XML-Kommentar wurde für den Member "M:SettingsModel.OptionsEngine.GetOptionValue``1(System.String,System.String)" ignoriert -->
+        <member name="M:SettingsModel.OptionsEngine.SetOptionValue(System.String,System.String,System.Object)">
+            <summary>
+            Sets the value of a given option in this option table.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <param name="optionName"></param>
+            <param name="newOptValue"></param>
+            <param name="outresult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.GetOptionGroups">
+            <summary>
+            Iterates through all <seealso cref="T:SettingsModel.Interfaces.IOptionGroup"/> items stored in this object
+            and gets each of these items at a time.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.GetOptionGroup(System.String)">
+            <summary>
+            Gets a set of option grouped in 1 object for simplified access.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.SetUndirty">
+            <summary>
+            Resets the IsDirty flag to false to indicate that the current
+            data was not changed/edited by a user request, yet. This is
+            useful after defining a new options model and starting to work
+            with it, as well, as after reading options from persistance...
+            </summary>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.SettingsModel#Interfaces#IEngine#RemoveOptionsGroup(System.String)">
+            <summary>
+            Remove a complete options group from the current model
+            (this will remove multiple settings at once). Use with extreem care.
+            Calling this methid is normally not required but the function is
+            provided for completeness.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.SettingsModel#Interfaces#IEngine#RemoveOption(System.String,System.String)">
+            <summary>
+            Remove an option from the current model
+            (this will remove multiple values at once if the
+            requested option referes to a list of option values).
+            
+            Use with extreem care.
+            Calling this method is normally not required but
+            the function is provided for completeness.
+            </summary>
+            <param name="nameOfOptionGroup"></param>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.SettingsModel#Interfaces#IEngine#RemoveAllOptions">
+            <summary>
+            Removes all option groups and their options and values manged in this object.
+            </summary>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.SettingsModel#Interfaces#IEngine#WriteXML(System.String)">
+            <summary>
+            Stores option groups and their values in an XML file and sets the
+            IsDirty flag to false.
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.WriteXML">
+            <summary>
+            Stores option groups and their values in a string containing XML
+            formatted data and sets the IsDirty flag to false.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.SettingsModel#Interfaces#IEngine#ReadXML(System.String)">
+            <summary>
+            Read option groups and their values from an XML file.
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.SettingsModel#Interfaces#IEngine#ReadXML(System.IO.TextReader)">
+            <summary>
+            Use this class to read XML from strings via <seealso cref="T:System.IO.StringReader"/>.
+            </summary>
+            <param name="reader"></param>
+        </member>
+        <member name="M:SettingsModel.OptionsEngine.CheckForValidName(System.String)">
+            <summary>
+            Checks if the name contains reserved characters and
+            returns an error message string if thats the case.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SettingsModel.OptionsEngine.IsDirty">
+            <summary>
+            Gets whether any of the properties stored in any options group have changed or not.
+            </summary>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionGroup.GetOptionDefinitions">
+            <summary>
+            Retrieves the schema of each option in this optiongroup.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionGroup.GetOptionDefinition(System.String)">
+            <summary>
+            Retrieves the schema of an option in this optiongroup.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionGroup.GetValue(System.String,System.Object@)">
+            <summary>
+            Gets the value of an option in a given <seealso cref="T:SettingsModel.OptionGroup"/> or null
+            if either option or <seealso cref="T:SettingsModel.OptionGroup"/> does not exist.
+            
+            Method returns false if option or <seealso cref="T:SettingsModel.OptionGroup"/> are not known.
+            </summary>
+            <param name="optionName"></param>
+            <param name="optValue">Indicates whether option and <seealso cref="T:SettingsModel.OptionGroup"/> exist or not.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionGroup.GetValue(System.String)">
+            <summary>
+            Gets the value of an option in a given <seealso cref="T:SettingsModel.OptionGroup"/> or
+            throws an exception if either option or <seealso cref="T:SettingsModel.OptionGroup"/>
+            does not exist.
+            
+            Method the requested option value if option and <seealso cref="T:SettingsModel.OptionGroup"/> are known.
+            </summary>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <!-- Ungültiger XML-Kommentar wurde für den Member "M:SettingsModel.Interfaces.IOptionGroup.GetValue``1(System.String)" ignoriert -->
+        <member name="M:SettingsModel.Interfaces.IOptionGroup.SetValue(System.String,System.Object)">
+            <summary>
+            Sets the value of a given option in this option table.
+            </summary>
+            <param name="keyName"></param>
+            <param name="outresult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionGroup.List_AddValue(System.String,System.String,System.Object)">
+            <summary>
+            Add a list item in a list schema
+            </summary>
+            <param name="keyName"></param>
+            <param name="optionName"></param>
+            <param name="value"></param>
+            <returns>
+            Returns true if item was succesfully added or false
+            if schema is not a list schema.
+            </returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionGroup.List_Clear(System.String)">
+            <summary>
+            Clear all items contained in a list.
+            </summary>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionGroup.List_CreateOption``1(System.String,System.Type,System.Boolean,System.Collections.Generic.List{``0})">
+            <summary>
+            Create a new option that can hold a list of items.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="optionName"></param>
+            <param name="type"></param>
+            <param name="isOptional"></param>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionGroup.List_GetListOfValues(System.String)">
+            <summary>
+            Gets a list of current values if this schema descripes a List.
+            Return a single value schema as a list of 1 item.
+            </summary>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionGroup.List_GetListOfKeyValues(System.String)">
+            <summary>
+            Gets a list of current keys and values if this schema
+            descripes a List.
+            
+            Return a single value schema as a list of 1 item.
+            </summary>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Interfaces.IOptionGroup.SetUndirty(System.Boolean)">
+            <summary>
+            Resets the IsDirty flag to false to indicate that the current
+            data was not changed/edited by a user request, yet. This is
+            useful after defining a new options model and starting to work
+            with it, as well, as after reading options from persistance...
+            </summary>
+            <param name="isDirty"></param>
+        </member>
+        <member name="P:SettingsModel.Interfaces.IOptionGroup.Name">
+            <summary>
+            Gets the name of this options group. This name is used to
+            cluster related options around a technically relevant name.
+            </summary>
+        </member>
+        <member name="T:SettingsModel.Models.Factory">
+            <summary>
+            Factory class to create an <seealso cref="T:SettingsModel.Interfaces.IEngine"/>
+            object from a class that is otherwise unknown to the outside world.
+            </summary>
+        </member>
+        <member name="M:SettingsModel.Models.Factory.CreateEngine">
+            <summary>
+            Create a new engine object that provides all root functions required
+            to model, track, persist, and load data at run-time.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SettingsModel.OptionGroup">
+            <summary>
+            An <seealso cref="T:SettingsModel.OptionGroup"/> is a set of options that is either grouped
+            physically or logically into any specific group. Using these groups or sets
+            of options allows application to configure and manage different sets of options
+            while using a similar backend system.
+            
+            Using this technique means, the set of available application options is dynamic
+            and can be configured in dependence of current run-time conditions.
+            </summary>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.#ctor(System.String)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.GetOptionDefinitions">
+            <summary>
+            Retrieves the schema of each option in this optiongroup.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.GetOptionDefinition(System.String)">
+            <summary>
+            Retrieves the schema of an option in this optiongroup
+            or null if <param name="optionName"/> cannot be resolved.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.GetValue(System.String,System.Object@)">
+            <summary>
+            Gets the value of a given option in this option table.
+            </summary>
+            <param name="optionName"></param>
+            <param name="outresult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.GetValue(System.String)">
+            <summary>
+            Gets the value of an option in a given <seealso cref="T:SettingsModel.OptionGroup"/> or
+            throws an exception if either option or <seealso cref="T:SettingsModel.OptionGroup"/>
+            does not exist.
+            
+            Method the requested option value if option and <seealso cref="T:SettingsModel.OptionGroup"/> are known.
+            </summary>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <!-- Ungültiger XML-Kommentar wurde für den Member "M:SettingsModel.OptionGroup.GetValue``1(System.String)" ignoriert -->
+        <member name="M:SettingsModel.OptionGroup.SetValue(System.String,System.Object)">
+            <summary>
+            Sets the value of a given option in this option table.
+            </summary>
+            <param name="optionName"></param>
+            <param name="outresult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.List_AddValue(System.String,System.String,System.Object)">
+            <summary>
+            Add a list item in a list schema
+            </summary>
+            <param name="keyName"></param>
+            <param name="optionName"></param>
+            <param name="value"></param>
+            <returns>
+            Returns true if item was succesfully added or false
+            if schema is not a list schema.
+            </returns>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.List_Clear(System.String)">
+            <summary>
+            Clear all items contained in a list.
+            </summary>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.List_CreateOption``1(System.String,System.Type,System.Boolean,System.Collections.Generic.List{``0})">
+            <summary>
+            Create a new option that can hold a list of items.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="optionName"></param>
+            <param name="type"></param>
+            <param name="isOptional"></param>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.List_GetListOfValues(System.String)">
+            <summary>
+            Gets a list of current values if this schema descripes a List.
+            Return a single value schema as a list of 1 item.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.List_GetListOfKeyValues(System.String)">
+            <summary>
+            Gets a list of current keys and values if this schema
+            descripes a List.
+            
+            Return a single value schema as a list of 1 item.
+            </summary>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.SetUndirty(System.Boolean)">
+            <summary>
+            Resets the IsDirty flag to false to indicate that the current
+            data was not changed/edited by a user request, yet. This is
+            useful after defining a new options model and starting to work
+            with it, as well, as after reading options from persistance...
+            </summary>
+            <param name="isDirty"></param>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.AddOption(System.String,System.Type,System.Boolean,System.Object)">
+            <summary>
+            Add another option and its definition (schema) into this option group.
+            </summary>
+            <param name="optionName"></param>
+            <param name="type"></param>
+            <param name="IsOptional"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:SettingsModel.OptionGroup.RemoveOptionDefinition(System.String)">
+            <summary>
+            Removes the option and value with the specified key
+            (option name) from the available list of options.
+            </summary>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SettingsModel.OptionGroup.Name">
+            <summary>
+            Gets the name of the <seealso cref="T:SettingsModel.OptionGroup"/>.
+            </summary>
+        </member>
+        <member name="P:SettingsModel.OptionGroup.IsDirty">
+            <summary>
+            Gets this <seealso cref="T:SettingsModel.OptionGroup"/> has unsaved changes or not.
+            </summary>
+        </member>
+        <member name="P:SettingsModel.OptionGroup.OptionDefinitions">
+            <summary>
+            Gets a dictionary of otpions defined for this <seealso cref="T:SettingsModel.OptionGroup"/>.
+            </summary>
+        </member>
+        <member name="T:SettingsModel.Models.OptionsSchema">
+            <summary>
+            Defines available schema information (or the model) for 1 option.
+            </summary>
+        </member>
+        <member name="M:SettingsModel.Models.OptionsSchema.#ctor(System.String,System.Type,System.Boolean,System.Object,SettingsModel.Models.OptionSchemaType)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="optionName"></param>
+            <param name="typeOfOptionValue"></param>
+            <param name="isOptional"></param>
+            <param name="defaultValue"></param>
+        </member>
+        <!-- Ungültiger XML-Kommentar wurde für den Member "M:SettingsModel.Models.OptionsSchema.List_Remove(System.String)" ignoriert -->
+        <!-- Ungültiger XML-Kommentar wurde für den Member "M:SettingsModel.Models.OptionsSchema.List_TryGetValue(System.String,System.Object@)" ignoriert -->
+        <member name="M:SettingsModel.Models.OptionsSchema.SetValue(System.Object)">
+            <summary>
+            Sets the value of a given option in this option object.
+            </summary>
+            <param name="outresult"></param>
+            <returns>true if data actually changed (for dirty state tracking).
+            Otherwise, false if requested value was already present.</returns>
+        </member>
+        <member name="M:SettingsModel.Models.OptionsSchema.List_AddValue(System.String,System.Object)">
+            <summary>
+            Add a list item in a list schema
+            </summary>
+            <param name="newValue"></param>
+            <returns>
+            Returns true if item was succesfully added or false
+            if schema is not a list schema.
+            </returns>
+        </member>
+        <member name="M:SettingsModel.Models.OptionsSchema.List_Clear">
+            <summary>
+            Clear all items contained in a list.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Models.OptionsSchema.List_GetListOfValues">
+            <summary>
+            Gets a list of current values if this schema descripes a List.
+            Return a single value schema as a list of 1 item.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Models.OptionsSchema.List_GetListOfKeyValues">
+            <summary>
+            Gets a list of current keys and values if this schema
+            descripes a List.
+            
+            Return a single value schema as a list of 1 item.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SettingsModel.Models.OptionsSchema.OptionName">
+            <summary>
+            Gets/sets the name of an option.
+            </summary>
+        </member>
+        <member name="P:SettingsModel.Models.OptionsSchema.TypeOfValue">
+            <summary>
+            Gets/sets the type of the option being defined here.
+            </summary>
+        </member>
+        <member name="P:SettingsModel.Models.OptionsSchema.IsOptional">
+            <summary>
+            Gets/sets whether this options is optional or required.
+            This is important when perisiting data and when reading
+            data from persistance.
+            </summary>
+        </member>
+        <member name="P:SettingsModel.Models.OptionsSchema.Value">
+            <summary>
+            Gets/sets the value of this option.
+            </summary>
+        </member>
+        <member name="P:SettingsModel.Models.OptionsSchema.DefaultValue">
+            <summary>
+            Gets/sets the default value of this option.
+            </summary>
+        </member>
+        <member name="T:SettingsModel.Models.XML.Converters.AlternativeDataTypeHandler">
+            <summary>
+            Holds a collection of <seealso cref="T:SettingsModel.Models.XML.Converters.IAlternativeDataTypeHandler"/> alternative datatype
+            handlers to handle datatypes that are not supported through equivalent conversion
+            in alternative datatypes.
+            </summary>
+        </member>
+        <member name="M:SettingsModel.Models.XML.Converters.AlternativeDataTypeHandler.FindHandler(System.Type)">
+            <summary>
+            Finds an alternative datatype handler to handle datatypes that are not
+            supported through equivalent conversion in alternative datatypes.
+            </summary>
+            <param name="typeOfDataType2Handle"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SettingsModel.Models.XML.Converters.SecureStringHandler">
+            <summary>
+            Source of string encryption and decryption:
+            http://weblogs.asp.net/jongalloway//encrypting-passwords-in-a-net-app-config-file
+            </summary>
+        </member>
+        <member name="M:SettingsModel.Models.XML.Converters.SecureStringHandler.#ctor">
+            <summary>
+            Class constructor
+            </summary>
+        </member>
+        <member name="M:SettingsModel.Models.XML.Converters.SecureStringHandler.Convert(System.Object)">
+            <summary>
+            Converts from the source datatype into the target data type representation.
+            </summary>
+            <param name="objectInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Models.XML.Converters.SecureStringHandler.ConvertBack(System.Object)">
+            <summary>
+            Converts from the target datatype into the source data type representation.
+            </summary>
+            <param name="objectEncryptedData"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SettingsModel.Models.XML.Converters.SecureStringHandler.SourceDataType">
+            <summary>
+            Gets the type of the original data type that is to be replaced
+            with an alternative (typed) representation.
+            </summary>
+        </member>
+        <member name="P:SettingsModel.Models.XML.Converters.SecureStringHandler.TargetDataType">
+            <summary>
+            Gets the type of the target data type that is to be used
+            instead of the original (typed) representation.
+            </summary>
+        </member>
+        <member name="T:SettingsModel.Models.XML.XMLLayer">
+            <summary>
+            Host API necessary to read and write settings model related data
+            from and to XML file storage.
+            </summary>
+        </member>
+        <member name="M:SettingsModel.Models.XML.XMLLayer.WriteXML(System.String,SettingsModel.Interfaces.IEngine)">
+            <summary>
+            Write current settings stored and manage in <paramref name="engine"/>
+            into an XML file as hinted by <paramref name="fileName"/>.
+            </summary>
+            <param name="fileName"></param>
+            <param name="engine"></param>
+        </member>
+        <member name="M:SettingsModel.Models.XML.XMLLayer.WriteXML(SettingsModel.Interfaces.IEngine)">
+            <summary>
+            Write XML represantation of option
+            settings into string and return it.
+            </summary>
+            <param name="engine"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Models.XML.XMLLayer.ReadXML(System.String,SettingsModel.Interfaces.IEngine)">
+            <summary>
+            Read current settings for storage and management in <paramref name="engine"/>
+            from an XML file as hinted by <paramref name="fileName"/>.
+            </summary>
+            <param name="fileName"></param>
+            <param name="engine"></param>
+        </member>
+        <member name="M:SettingsModel.Models.XML.XMLLayer.ReadXML(System.IO.TextReader,SettingsModel.Interfaces.IEngine)">
+            <summary>
+            Read current settings for storage and management in <paramref name="engine"/>
+            from an XML <seealso cref="T:System.IO.TextReader"/> object as hinted by <paramref name="reader"/>.
+            Use this method to read XML from strings via <seealso cref="T:System.IO.StringReader"/> class.
+            </summary>
+            <param name="fileName"></param>
+            <param name="engine"></param>
+        </member>
+        <member name="M:SettingsModel.Models.XML.XMLLayer.ConvertFromModelToDataSet(SettingsModel.Interfaces.IEngine)">
+            <summary>
+            Builds a <seealso cref="T:System.Data.DataSet"/> with <seealso cref="T:System.Data.DataTable"/> items
+            and <seealso cref="T:System.Data.DataRow"/> items for the current schema of options and
+            option values for data write XML to persistence.
+            </summary>
+            <param name="engine"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Models.XML.XMLLayer.ConvertFromDataSetToModel(SettingsModel.Interfaces.IEngine,System.Data.DataSet)">
+            <summary>
+            Method transfers data format from <seealso cref="T:System.Data.DataSet"/> with <seealso cref="T:System.Data.DataTable"/> items
+            and <seealso cref="T:System.Data.DataRow"/> items into the current schema of options
+            and option values for data read from XML persistence into the in-memory model.
+            Converts external XML format into internal format.
+            </summary>
+            <param name="engine"></param>
+            <param name="dataSet"></param>
+        </member>
+        <member name="M:SettingsModel.Models.XML.XMLLayer.CreateTable(SettingsModel.Interfaces.IOptionGroup)">
+            <summary>
+            Creates a <seealso cref="T:System.Data.DataTable"/> for a given <seealso cref="!:IOptionsGroup"/>
+            and adds corresponding column definitions.
+            </summary>
+            <param name="tableSchema"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Models.XML.XMLLayer.CreateListTable(System.String,SettingsModel.Interfaces.IOptionsSchema,SettingsModel.Models.XML.Converters.IAlternativeDataTypeHandler,System.Data.DataRow)">
+            <summary>
+            Creates a <seealso cref="T:System.Data.DataTable"/> object with 1 column and n rows
+            that represnts the values of a list of values.
+            </summary>
+            <param name="tableName"></param>
+            <param name="columnSchema"></param>
+            <param name="handler"></param>
+            <param name="masterRow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Models.XML.XMLLayer.FindOptionsGroup(SettingsModel.Interfaces.IEngine,System.String,System.String@)">
+            <summary>
+            Attempts to map a table name into an OptionsGroup which is return as
+            <see cref="T:SettingsModel.Interfaces.IOptionGroup"/> interface.
+            
+            This includes lists of values that are stored inside
+            an option in an optiongroup (optionName is set in this case).
+            </summary>
+            <param name="engine"></param>
+            <param name="tableName"></param>
+            <param name="groupName"></param>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Models.XML.XMLLayer.CreateListItemTableName(SettingsModel.Interfaces.IOptionGroup,SettingsModel.Interfaces.IOptionsSchema)">
+            <summary>
+            Creates a unique id-able name for list items that are indirectly attached to OptionsGroups
+            but are physically stored in their own table (to enable storage of multiple values in XML).
+            </summary>
+            <param name="optionsGroup"></param>
+            <param name="optionSchema"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SettingsModel.Models.XML.XMLLayer.TryResolveOptionsGroupAndOptionName(System.String,System.String@,System.String@)">
+            <summary>
+            Options list are coded in XML with special characters. This method is used
+            to resolve the coding based on the given parameter.
+            </summary>
+            <param name="name"></param>
+            <param name="groupName"></param>
+            <param name="optionName"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

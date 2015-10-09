@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Locult.ViewModels.AppViewModel">
+    <Position X="0.75" Y="5.75" Width="4" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQABIAAACSAAAAADAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AppViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Locult.ViewModels.Pages.PageManagerViewModel">
+    <Position X="5.5" Y="6.5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIASAAAAACABIAAAADAAAAEAAAAAAAAAAEAAI=</HashCode>
+      <FileName>ViewModels\Pages\PageManagerViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Locult.ViewModels.Pages.StartPageViewModel">
+    <Position X="6.25" Y="3.25" Width="5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAAAAAAACAAAAAAACAAAAAAAAAAAQAAAAAAAAEAAAAA=</HashCode>
+      <FileName>ViewModels\Pages\StartPageViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Locult.ViewModels.Pages.EditPageViewModel">
+    <Position X="7" Y="11.75" Width="4" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Locult.ViewModels.Pages.EditPageViewModel.DirtyDocument" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewModels\Pages\EditPageViewModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAABAAASAAAACCAAEAAAAACAACEoAAoAAAAAAAEAA=</HashCode>
+      <FileName>ViewModels\Pages\EditPageViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Locult.ViewModels.Pages.StartPage.NewSolutionViewModel">
+    <Position X="11.5" Y="0.5" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="Locult.ViewModels.Pages.StartPage.StartPageSolutionViewModel" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="17.875" Y="3.25" />
+        <Point X="17.875" Y="2.23" />
+        <Point X="16" Y="2.23" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAEICABQAAAAEgAAAAAAAFgEBAAgIIAAEAAABA=</HashCode>
+      <FileName>ViewModels\Pages\StartPage\NewSolutionViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Locult.ViewModels.Pages.StartPage.OpenSolutionViewModel">
+    <Position X="11.5" Y="3.75" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAUAAAAIAEAAAAAAAEAAAIABAACEAAAAA=</HashCode>
+      <FileName>ViewModels\Pages\StartPage\OpenSolutionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Locult.ViewModels.Pages.StartPage.StartPageSolutionViewModel">
+    <Position X="17" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Pages\StartPage\StartPageSolutionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Locult.ViewModels.Pages.EditPageDocuments.EditProjectDocumentViewModel" BaseTypeListCollapsed="true">
+    <Position X="16" Y="12.75" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEACAAAiBIAAAACAABAAEgAAAgAgAAACEAQBA=</HashCode>
+      <FileName>ViewModels\Pages\EditPageDocuments\EditProjectDocumentViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Locult.ViewModels.Pages.EditPageDocuments.EditSolutionDocumentViewModel" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="9.25" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AIAgAAAEAGAggiBAAAAgQAEAAAAAAAAMQgAACCcASAA=</HashCode>
+      <FileName>ViewModels\Pages\EditPageDocuments\EditSolutionDocumentViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Locult.ViewModels.Pages.EditPageDocuments.EditTranslationsDocumentViewModel" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="14.75" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EGEoAnAAISAKAAISBhQRAAQAEAAAKAAAgCAAAAIgCEI=</HashCode>
+      <FileName>ViewModels\Pages\EditPageDocuments\EditTranslationsDocumentViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Locult.ViewModels.AppLifeCycleViewModel">
+    <Position X="0.75" Y="0.5" Width="4" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABADAAAQgEAAASIAABAEAEACAAAQAAAAABAAQAIAA=</HashCode>
+      <FileName>ViewModels\AppLifeCycle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Locult.ViewModels.StringSource.StringCollectionDiffViewModel">
+    <Position X="16.25" Y="17.75" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gAQTBIgBACCBgCkQAJKAIggABBAAECABVgCICAAABDQ=</HashCode>
+      <FileName>ViewModels\StringSource\StringCollectionDiffViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Locult.ViewModels.StringSource.StringCollectionViewModel">
+    <Position X="20.5" Y="16.5" Width="4.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BIEgAAMAACkQAAMAAAIIAAAAAAAGEgAAEBKBERBQAAA=</HashCode>
+      <FileName>ViewModels\StringSource\StringCollectionViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Locult.ViewModels.StringSource.EntryDiffViewModel">
+    <Position X="26" Y="16.75" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAgBoAICAAAAAAQAAAAAQEAAQAgAIAYAQAEiAAgAUIg=</HashCode>
+      <FileName>ViewModels\StringSource\EntryDiffViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Locult.ViewModels.StringSource.IEntryDiffViewModelParent">
+    <Position X="26" Y="21.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>ViewModels\StringSource\EntryDiffViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Locult.ViewModels.StringSource.IStringCollectionDiffViewModelParent">
+    <Position X="20.5" Y="20.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\StringSource\IStringCollectionDiffViewModelParent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Locult.ViewModels.StringSource.ProcessDestination">
+    <Position X="16.25" Y="22.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\StringSource\StringCollectionDiffViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="Locult.ViewModels.Events.ApplicationRequestEventHandler">
+    <Position X="5.5" Y="10" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Events\ApplicationRequestEvent.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

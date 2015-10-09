@@ -1,0 +1,198 @@
+<UserControl x:Class=" LocultApp.Views.Pages.StartPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+
+             xmlns:controls="clr-namespace:LocultApp.Controls.Solution"
+             xmlns:conv="clr-namespace:LocultApp.Converter"
+             xmlns:local="clr-namespace:LocultApp.Local"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="1200" d:DesignWidth="800">
+    <Grid Margin="3">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Margin="0,0,0,12" Style="{StaticResource Heading1}" >
+                <TextBlock ToolTip="{Binding PageDisplayName_Tip}"
+                           Text="{Binding PageDisplayName}" >
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=IsDirty, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                                <Setter Property="Text" Value="{Binding PageDisplayName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=IsDirty, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                <Setter Property="Text" Value="{Binding PageDisplayName, StringFormat='\{0\}*', UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+                </TextBlock>
+            </TextBlock>
+
+        <TabControl  Grid.Row="2" SelectedIndex="{Binding SelectedSolutionIndex}">
+            <TabItem Header="{x:Static local:Strings.STR_HEADER_NewSolution}" DataContext="{Binding SolutionOperations[0]}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Grid.Row="0" Header="{x:Static local:Strings.STR_HEADER_Solution}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Vertical" Grid.Row="0">
+                                <Label Content="{x:Static local:Strings.STR_LABEL_Name}"
+                                       ContentStringFormat="{}{0}:"
+                                       Target="{Binding ElementName=txtNewSolutionName}" />
+                                <TextBox Text="{Binding NewSolutionName, UpdateSourceTrigger=PropertyChanged}"
+                                 Name="txtNewSolutionName"
+                                 />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Grid.Row="1"
+                                        xmlns:ctrls="clr-namespace:DropDownButtonLib.Controls;assembly=DropDownButtonLib"
+                                        >
+                                <Label Content="{x:Static local:Strings.STR_LABEL_Location}"
+                                       ContentStringFormat="{}{0}:"
+                                       Target="{Binding ElementName=txtNewSolutionLocation, UpdateSourceTrigger=PropertyChanged}" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <ctrls:DropDownButton Grid.Column="0"
+                                                          MinHeight="25"
+                                                          IsEnabled="True"
+                                                          Content="..."                              
+                                                          IsOpen="{Binding DropDownBrowser.IsOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                          HorizontalAlignment="Left" VerticalAlignment="Center"
+                                                          Margin="3" 
+                                                        >
+                                        <ctrls:DropDownButton.DropDownContent>
+                                            <StackPanel xmlns:views="clr-namespace:FolderBrowser.Views;assembly=FolderBrowser" IsHitTestVisible="True" Focusable="True">
+                                                <views:DropDownView DataContext="{Binding DropDownBrowser}" />
+                                            </StackPanel>
+                                        </ctrls:DropDownButton.DropDownContent>
+                                    </ctrls:DropDownButton>
+
+                                    <TextBox Grid.Column="1"
+                                             Text="{Binding NewSolutionLocation, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                             Name="txtNewSolutionLocation" />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="1" Header="{x:Static local:Strings.STR_HEADER_Project}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Vertical" Grid.Row="0">
+                                <Label Content="{x:Static local:Strings.STR_LABEL_SourceFile}"
+                                       ContentStringFormat="{}{0}:"
+                                       Target="{Binding ElementName=txtSourceFile}" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0"
+                                    Command="{Binding BrowseForSourceFileCommand}"
+                                    Content="..."
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left" />
+                                    <TextBox Grid.Column="1"
+                                     Text="{Binding NewSourceFilePathName,UpdateSourceTrigger=PropertyChanged}"
+                                     Name="txtSourceFile" />
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Grid.Row="1">
+                                <Label Content="{x:Static local:Strings.STR_LABEL_Comment}"
+                                       ContentStringFormat="{}{0}:"
+                                       Target="{Binding ElementName=txtComment}" />
+                                <TextBox Text="{Binding Comment,UpdateSourceTrigger=PropertyChanged}"
+                                         Name="txtComment" />
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Header="{x:Static local:Strings.STR_HEADER_TargetFiles}" Grid.Row="2" DataContext="{Binding UpdateTargetFiles}">
+                        <controls:UpdateTargetFilesView />
+                    </GroupBox>
+
+                    <Button Content="{x:Static local:Strings.STR_CAPTION_NEW_BUTTON}"
+                            ToolTip="{x:Static local:Strings.STR_CAPTION_NEW_BUTTON_TT}"
+                            Command="{Binding CreateSolutionCommand}"
+                            Margin="3"
+                            Grid.Row="3"
+                            VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="{x:Static local:Strings.STR_HEADER_OpenSolution}"  DataContext="{Binding SolutionOperations[1]}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Margin="3,3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Margin="0,0" Padding="2,1"
+                                   Content="{x:Static local:Strings.STR_LABEL_SOLUTION_LOCATION}"
+                                   ContentStringFormat="{}{0}:"
+                                   Target="{Binding ElementName=txtOpenSolutionFile}" />
+                            <Grid Grid.Row="1" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0"
+                                    Command="{Binding BrowseForSolutionCommand}"
+                                    Content="..."
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left" />
+                                <TextBox Grid.Column="1"
+                                     Text="{Binding SolutionLocation, UpdateSourceTrigger=PropertyChanged}"
+                                     Name="txtOpenSolutionFile" />
+                            </Grid>
+                        </Grid>
+
+                        <Button Content="{x:Static local:Strings.STR_CAPTION_OPEN_BUTTON}"
+                            ToolTip="{x:Static local:Strings.STR_CAPTION_OPEN_BUTTON_TT}"
+                            Command="{Binding OpenSolutionCommand}"
+                            Margin="3"
+                            Grid.Row="1"
+                            VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>

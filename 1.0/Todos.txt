@@ -1,0 +1,17 @@
+
+
+Todos:
+ - Bugfix (done) Application>Exit on Open Document with Active Settings Page
+   Application does not close if Current document is dirty (even when settings are visible)
+ 
+ - Bugfix (done) Start Page button during Settings page
+
+ - Make list of bookmarks be storable in options (done)
+   - Integrate Drop DownBrowser in NewSolution StartPage (done)
+
+ - Grid Stripes ON/Off Options
+   - 2 Color options (done)
+
+ - Add recently used locult files
+
+ - Add Getting Started -> Help/About Tab

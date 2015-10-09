@@ -1,0 +1,130 @@
+﻿<UserControl x:Class=" LocultApp.Controls.Solution.UpdateTargetFilesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+
+             xmlns:behav="clr-namespace:LocultApp.Behaviours"
+             xmlns:local="clr-namespace:LocultApp.Local"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                        Content="{x:Static local:Strings.STR_CAPTION_ADD}"
+                        Command="{Binding AddTargetFileCommand}"
+                        IsEnabled="{Binding ElementName=txtNewEditTarget, Path=Text.Length, UpdateSourceTrigger=PropertyChanged}"
+                        Margin="3" />
+
+            <Button Grid.Column="1"
+                        Content="{x:Static local:Strings.STR_CAPTION_REMOVE}"
+                        Command="{Binding RemoveTargetFileCommand}"
+                        CommandParameter="{Binding ElementName=lstTargetFiles, Path=SelectedItem}"
+                        IsEnabled="{Binding ElementName=lstTargetFiles, Path=SelectedItems.Count, UpdateSourceTrigger=PropertyChanged}"
+                        Margin="3" />
+
+            <Button Grid.Column="2"
+                        Content="{x:Static local:Strings.STR_CAPTION_ADD_Files}"
+                        Command="{Binding AddTargetFilesCommand}"
+                        Margin="3"
+                    />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Content="{x:Static local:Strings.STR_LABEL_PATH}"
+                                        ContentStringFormat="{}{0}:"
+                                        Target="{Binding ElementName=txtNewEditTarget}"
+                                        Margin="0,3,3,0"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                Command="{Binding BrowseForTargetFileCommand}"
+                                Content="..."
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Margin="3,0,3,3" />
+
+                        <TextBox Grid.Column="1"
+                                 Text="{Binding NewEditTarget}"
+                                 Name="txtNewEditTarget"
+                                 Margin="3,0,3,3" />
+
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0"
+                           Content="{x:Static local:Strings.STR_LABEL_Comment}"
+                           ContentStringFormat="{}{0}:"
+                           Target="{Binding ElementName=txtNewEditTargetComment}"
+                           Margin="0,3,3,0"/>
+                    <TextBox Grid.Row="1" Text="{Binding NewEditTargetComment}" Name="txtNewEditTargetComment" Margin="3,0,3,3" />
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Content="{x:Static local:Strings.STR_LABEL_FILES}"
+                       ContentStringFormat="{}{0}:"
+                       Target="{Binding ElementName=lstTargetFiles}" Margin="0,3,3,0" />
+                <ListBox Grid.Row="1"
+                             Name="lstTargetFiles"
+                             ItemsSource="{Binding TargetFilesCollection}"
+                             behav:SelectedItemChanged.Command="{Binding SelectedItemChangedCommand}"
+                             Margin="3,0,3,3"
+                            >
+                    <ListBox.ToolTip>
+                        <TextBlock Text="{Binding TargetFilesCollection.Count, StringFormat=Count: {0}}" />
+                    </ListBox.ToolTip>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path}" ToolTip="{Binding Comment}" Margin="3" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
