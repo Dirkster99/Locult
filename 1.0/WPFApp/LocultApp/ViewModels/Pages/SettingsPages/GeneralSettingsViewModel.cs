@@ -230,7 +230,7 @@
         #endregion GridColor Options
 
         /// <summary>
-        /// Gets/sets the URI of the Microsoft Translation Service.
+        /// Gets/sets the URI of the Microsoft Translator Service.
         /// </summary>
         public string TranslationServiceUri
         {
@@ -254,7 +254,7 @@
         }
 
         /// <summary>
-        /// Gets/sets the password of the Microsoft Translation Service.
+        /// Gets/sets the password of the Microsoft Translator Service.
         /// </summary>
         public SecureString TranslationServicePassword
         {
@@ -278,7 +278,7 @@
         }
 
         /// <summary>
-        /// Gets/sets the user name (login) of the Microsoft Translation Service.
+        /// Gets/sets the user name (login) of the Microsoft Translator Service.
         /// </summary>
         public SecureString TranslationServiceUser
         {
