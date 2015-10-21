@@ -14,7 +14,7 @@ Todos:
 
  - Add Getting Started -> About Tab (done)
 
- - Add recently used locult files
+ - Add recently used locult files (done)
    - Add write back to Profile when MRU was changed (by user) or entry was added
 
  - Expander in Treeview is White on White Background

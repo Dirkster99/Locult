@@ -3,10 +3,10 @@
   <PropertyGroup>
     <PublishUrlHistory>C:\Users\Internet\Desktop\LocultSetup\</PublishUrlHistory>
     <InstallUrlHistory>https://locult.codeplex.com/</InstallUrlHistory>
-    <SupportUrlHistory />
+    <SupportUrlHistory>https://locult.codeplex.com/workitem/list/basic</SupportUrlHistory>
     <UpdateUrlHistory />
     <BootstrapperUrlHistory />
-    <ErrorReportUrlHistory />
+    <ErrorReportUrlHistory>https://locult.codeplex.com/workitem/list/basic</ErrorReportUrlHistory>
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>

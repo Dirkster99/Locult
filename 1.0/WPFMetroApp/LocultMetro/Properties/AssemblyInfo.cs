@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("LocultMetro")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP")]
+[assembly: AssemblyCompany("Open Source")]
 [assembly: AssemblyProduct("LocultMetro")]
 [assembly: AssemblyCopyright("Copyright Dirk Bahle © 2015")]
 [assembly: AssemblyTrademark("")]
