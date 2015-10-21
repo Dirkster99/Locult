@@ -4,8 +4,9 @@
     using LocultApp.ViewModels.Pages.StartPage;
     using System;
     using System.Threading;
+    using LocultApp.ViewModels.Interfaces;
 
-    public class StartPageViewModel : PageBaseViewModel, LocultApp.ViewModels.Pages.StartPage.IRequestAction, IDisposable
+    public class StartPageViewModel : PageBaseViewModel, IRequestAction, ISaveSettings, IDisposable
     {
         #region fields
         private const int NewSolutionViewModelIdx = 0;
@@ -157,6 +158,15 @@
         {
             Dispose(false);
         }
+       
+        /// <summary>
+        /// Initialize viewmodel from this model.
+        /// </summary>
+        /// <param name="listModel"></param>
+        public void InitMRU(MRUModelLib.Interfaces.IMRUList listModel)
+        {
+            (SolutionOperations[OpenSolutionViewModelIdx] as OpenSolutionViewModel).InitMRU(listModel);
+        }
 
         public void GetStarted(string lastActiveSolution)
         {
@@ -178,5 +188,17 @@
             }
         }
         #endregion methods
+
+        void ISaveSettings.SavePageSettings(Settings.Interfaces.ISettingsManager settings)
+        {
+            for (int i = 0; i < mSolutionOperations.Length; i++)
+            {
+                // Can this page persist data to the settings manager?
+                var savesets = mSolutionOperations[i] as ISaveSettings;
+
+                if (savesets != null)
+                    savesets.SavePageSettings(settings);
+            }
+        }
     }
 }

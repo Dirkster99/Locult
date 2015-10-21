@@ -40,6 +40,12 @@
     <Reference Include="log4net">
       <HintPath>..\..\Binaries\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MRULib">
+      <HintPath>..\..\Binaries\MRU\MRULib.dll</HintPath>
+    </Reference>
+    <Reference Include="MRUModelLib">
+      <HintPath>..\..\Binaries\MRU\MRUModelLib.dll</HintPath>
+    </Reference>
     <Reference Include="MsgBox">
       <HintPath>..\..\Binaries\MsgBox\MsgBox.dll</HintPath>
     </Reference>
@@ -125,6 +131,7 @@
     <Compile Include="ViewModels\Events\ApplicationRequestEvent.cs" />
     <Compile Include="ViewModels\Events\IRequestAction.cs" />
     <Compile Include="ViewModels\IDocumentCollection.cs" />
+    <Compile Include="ViewModels\Interfaces\ISaveSettings.cs" />
     <Compile Include="ViewModels\IProcessItems.cs" />
     <Compile Include="ViewModels\Pages\EditPageDocuments\Base\DocumentViewModelBase.cs" />
     <Compile Include="ViewModels\Pages\EditPageDocuments\Base\Events\DocumentDirtyChangedEventArgs.cs" />

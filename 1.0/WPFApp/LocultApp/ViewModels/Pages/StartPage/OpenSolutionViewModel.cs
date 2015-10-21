@@ -4,7 +4,9 @@
     using LocultApp;
     using LocultApp.ViewModels.Base;
     using LocultApp.ViewModels.Events;
+    using LocultApp.ViewModels.Interfaces;
     using LocultApp.ViewModels.Pages.EditPageDocuments;
+    using MRULib.MRU.ViewModels;
     using System;
     using System.Threading;
     using System.Windows.Input;
@@ -14,7 +16,7 @@
     /// The result is an event that, when subscriped, can be used to do the
     /// actual work of opening and reading data from persistence.
     /// </summary>
-    public class OpenSolutionViewModel : StartPageSolutionViewModel, IDisposable
+    public class OpenSolutionViewModel : StartPageSolutionViewModel, IDisposable, ISaveSettings
     {
         #region fields
         private string mDefaultDocumentLocation = @"C:\TEMP\";
@@ -24,6 +26,7 @@
         private RelayCommand<object> mOpenSolutionCommand;
         private RelayCommand<object> mBrowseForSolutionCommand;
         private bool mDisposed = false;
+        private MRUListViewModel mMRU = null;
         #endregion fields
 
         #region constructors
@@ -34,6 +37,7 @@
         /// <param name="requestedAction"></param>
         public OpenSolutionViewModel(string defaultNamePath = null,
                                     ApplicationRequestEventHandler requestedAction = null)
+            : this()
         {
             if (defaultNamePath != null)
                 mDefaultDocumentLocation = System.IO.Path.GetDirectoryName(defaultNamePath);
@@ -42,9 +46,37 @@
 
             RequestedAction = requestedAction;
         }
+
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        public OpenSolutionViewModel()
+        {
+            MRU = null;
+        }
         #endregion constructors
 
         #region properties
+        /// <summary>
+        /// Gets/sets an MRU property to manage most recently used file entries.
+        /// </summary>
+        public MRUListViewModel MRU
+        {
+            get
+            {
+                return mMRU;
+            }
+
+            private set
+            {
+                if (mMRU != value)
+                {
+                    mMRU = value;
+                    RaisePropertyChanged(() => MRU);
+                }
+            }
+        }
+
         /// <summary>
         /// Get/set file path and name of new solution (complete path)
         /// </summary>
@@ -127,6 +159,29 @@
         #endregion properties
 
         #region methods
+        /// <summary>
+        /// Store settings in the settings model space.
+        /// This method should be called before destroying a page for good.
+        /// </summary>
+        /// <param name="settings"></param>
+        void ISaveSettings.SavePageSettings(Settings.Interfaces.ISettingsManager settings)
+        {
+            // Store the current list of MRU model items in the settings manager space
+            settings.SessionData.ResetMRUModel(MRU.GetModelList());
+        }
+
+        /// <summary>
+        /// Initialize viewmodel from this model.
+        /// </summary>
+        /// <param name="listModel"></param>
+        public void InitMRU(MRUModelLib.Interfaces.IMRUList listModel)
+        {
+            MRU = new MRUListViewModel(listModel);  // Constrcut MRU ViewModel from Model
+
+            // Delegate load solution requests from the MRU into this viemodel
+            MRU.LoadFileCommandDelegate = OpenSolutionCommandExecuted;
+        }
+
         /// <summary>
         /// Standard dispose method of the <seealso cref="IDisposable" /> interface.
         /// </summary>

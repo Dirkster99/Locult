@@ -3,6 +3,7 @@
     using LocultApp.Controls.Solution;
     using LocultApp.ViewModels.Interfaces;
     using MsgBox;
+    using Settings.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;

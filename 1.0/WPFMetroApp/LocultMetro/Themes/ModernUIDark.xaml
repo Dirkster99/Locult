@@ -4,7 +4,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Themes/Brushes/ModernUI.xaml" />
-        <ResourceDictionary Source="/Themes/Brushes/Dark_Brushes.xaml" />
+        <ResourceDictionary Source="/Themes/Brushes/Dark_Brushes.xaml" />       
         <ResourceDictionary Source="/UserNotification;component/Themes/DarkBrush.xaml" />
         <ResourceDictionary Source="/FolderBrowser;component/Themes/MetroDark.xaml" />
         <ResourceDictionary Source="/DropDownButtonLib;component/Themes/MetroDark.xaml"/>
@@ -15,6 +15,9 @@
         <ResourceDictionary Source="/FsCore;component/Images/Metro/MetroDarkIcons.xaml" />
         <ResourceDictionary Source="/ColorPickerLib;component/Themes/MetroDark/Brushes.xaml"/>
         <ResourceDictionary Source="/LocultApp;component/Images/MetroDarkIcons.xaml" />
+        <ResourceDictionary Source="/MRULib;component/Themes/ModernUI/Dark/Theme.xaml" />
+        
+        <ResourceDictionary Source="/LocultMetro;component/Themes/Controls/TreeView.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!-- Style TargetType="{x:Type Control}" x:Key="baseStyle">

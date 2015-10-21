@@ -12,6 +12,12 @@ Todos:
  - Grid Stripes ON/Off Options
    - 2 Color options (done)
 
- - Add recently used locult files
+ - Add Getting Started -> About Tab (done)
 
- - Add Getting Started -> Help/About Tab
+ - Add recently used locult files
+   - Add write back to Profile when MRU was changed (by user) or entry was added
+
+ - Expander in Treeview is White on White Background
+   fixed
+   Moved <ResourceDictionary Source="/LocultMetro;component/Themes/Controls/TreeView.xaml" />
+   to ModernUIDark.xaml only

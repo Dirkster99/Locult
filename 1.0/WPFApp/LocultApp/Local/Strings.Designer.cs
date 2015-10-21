@@ -694,6 +694,15 @@ namespace LocultApp.Local {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recent Solutions.
+        /// </summary>
+        public static string STR_LABEL_RECENT_SOLUTION_ITEMS {
+            get {
+                return ResourceManager.GetString("STR_LABEL_RECENT_SOLUTION_ITEMS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Solution Directory.
         /// </summary>
         public static string STR_LABEL_SOLUTION_LOCATION {
@@ -739,7 +748,7 @@ namespace LocultApp.Local {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Microsoft Translation Service.
+        ///   Looks up a localized string similar to Microsoft Translator.
         /// </summary>
         public static string STR_MS_Translate_Caption {
             get {

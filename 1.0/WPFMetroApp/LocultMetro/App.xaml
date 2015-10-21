@@ -47,7 +47,6 @@
                 <ResourceDictionary Source="/LocultMetro;component/Themes/Controls/GroupBox.xaml" />
                 
                 <!-- ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/TreeView.xaml" / -->
-                <ResourceDictionary Source="/LocultMetro;component/Themes/Controls/TreeView.xaml" />
                 <!-- see issue at MUI GitHub site -->
                 <!-- ResourceDictionary Source="/LocultMetro;component/Themes/ModernUILightBrushes.xaml" / Dark brushes are further below in this file -->
                 <ResourceDictionary Source="/FolderBrowser;component/Images/GenericIcons.xaml" />

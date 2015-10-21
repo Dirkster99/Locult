@@ -1,29 +1,11 @@
 ﻿namespace Settings.Interfaces
 {
-    using System;
-    using Settings;
-    using Settings.Interfaces;
-    using System.Collections.Generic;
     using Settings.ProgramSettings;
-    using System.Xml.Serialization;
     using Settings.Themes;
+    using System.Collections.Generic;
 
     public interface ISettingsManager : IOptionsPanel
     {
-        void CheckSettingsOnLoad(double SystemParameters_VirtualScreenLeft, double SystemParameters_VirtualScreenTop);
-
-        ////void LoadOptions(string settingsFileName);
-        void LoadSessionData(string sessionDataFileName);
-
-        ////bool SaveOptions(string settingsFileName, Settings.Interfaces.IOptions optionsModel);
-        bool SaveSessionData(string sessionDataFileName, Settings.Interfaces.IProfile model);
-
-        /// <summary>
-        /// Get a list of all supported languages in Edi.
-        /// </summary>
-        /// <returns></returns>
-        IEnumerable<LanguageCollection> GetSupportedLanguages();
-
         #region properties
         Settings.Interfaces.IProfile SessionData { get; }
         ////Settings.Interfaces.IOptions SettingData { get; } > replaced qith Query() method in IOptionsPanel
@@ -52,8 +34,23 @@
         /// <summary>
         /// Gets the internal name and Uri source for all available themes.
         /// </summary>
-        [XmlIgnore]
         IThemeInfos Themes { get; }
         #endregion properties
+
+        #region methods
+        void CheckSettingsOnLoad(double SystemParameters_VirtualScreenLeft, double SystemParameters_VirtualScreenTop);
+
+        ////void LoadOptions(string settingsFileName);
+        void LoadSessionData(string sessionDataFileName);
+
+        ////bool SaveOptions(string settingsFileName, Settings.Interfaces.IOptions optionsModel);
+        bool SaveSessionData(string sessionDataFileName, Settings.Interfaces.IProfile model);
+
+        /// <summary>
+        /// Get a list of all supported languages in Edi.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<LanguageCollection> GetSupportedLanguages();
+        #endregion methods
     }
 }

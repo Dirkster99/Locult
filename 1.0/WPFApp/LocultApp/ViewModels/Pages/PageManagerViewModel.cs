@@ -3,7 +3,9 @@
     using AppResourcesLib;
     using LocultApp.Controls.Exception;
     using LocultApp.ViewModels.Base;
+    using LocultApp.ViewModels.Interfaces;
     using LocultApp.ViewModels.Pages.Interfaces;
+    using LocultApp.ViewModels.Pages.StartPage;
     using MsgBox;
     using Settings.Interfaces;
     using System;
@@ -339,6 +341,7 @@
                 }
 
                 var startPage = new StartPageViewModel(RequestedApplicationAction, lastActiveFile);
+                startPage.InitMRU(settings.SessionData.MRU);
                 startPage.GetStarted(lastActiveFile);
 
                 // Move settings page out of the way if it is currently visible
@@ -562,7 +565,7 @@
                 var result = await modelExt.SaveSolutionAsync(solution, fileLocation);
 
                 var settings = GetService<ISettingsManager>();
-                settings.SessionData.LastActiveSolution = fileLocation;
+                settings.SessionData.SetLastActiveSolution(fileLocation);
 
                 return result;
             }
@@ -586,7 +589,7 @@
                 solution = await solFacade.LoadSolutionAsync(fileLocation);
 
                 var settings = GetService<ISettingsManager>();
-                settings.SessionData.LastActiveSolution = fileLocation;
+                settings.SessionData.SetLastActiveSolution(fileLocation);
             }
             finally
             {
@@ -712,15 +715,33 @@
             if (freeze != null)
                 freeze.OnViewLoaded();
 
-            if (disposeOldPage == true && oldPage != null)
+            if (oldPage != null)
             {
-                if (oldPage is IDisposable)
-                    (oldPage as IDisposable).Dispose();
+                SavePageSettings(oldPage, GetService<ISettingsManager>());  // Be sure to always save changed settings from old page
 
-                oldPage = null;
+                if (disposeOldPage == true)
+                {
+                    if (oldPage is IDisposable)
+                        (oldPage as IDisposable).Dispose();
+
+                    oldPage = null;
+                }
             }
 
             return oldPage;
+        }
+
+        /// <summary>
+        /// Have a look at the page and determine whether there are any data items that require persistence.
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="settings"></param>
+        private void SavePageSettings(PageBaseViewModel page, ISettingsManager settings)
+        {
+            var item = page as ISaveSettings;
+
+            if (item != null)
+                item.SavePageSettings(settings);
         }
         #endregion methods
     }

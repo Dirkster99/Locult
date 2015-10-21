@@ -4,12 +4,9 @@
     using Settings.ProgramSettings;
     using Settings.Themes;
     using Settings.UserProfile;
+    using Settings.UserProfile.Persistable;
     using SettingsModel.Interfaces;
-    using System;
     using System.Collections.Generic;
-    using System.IO;
-    using System.Xml;
-    using System.Xml.Serialization;
 
     /// <summary>
     /// This class keeps track of program options and user profile (session) data.
@@ -17,7 +14,7 @@
     /// the program state of the last user session or to implement the default
     /// application state when starting the application for the very first time.
     /// </summary>
-    public class SettingsManager : ISettingsManager
+    internal class SettingsManager : ISettingsManager
     {
         #region fields
         protected static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -69,7 +66,6 @@
         }
 
         #region min max definitions for useful option values
-        [XmlIgnore]
         public int IconSizeMin
         {
             get
@@ -78,7 +74,6 @@
             }
         }
 
-        [XmlIgnore]
         public int IconSizeMax
         {
             get
@@ -87,7 +82,6 @@
             }
         }
 
-        [XmlIgnore]
         public int FontSizeMin
         {
             get
@@ -96,7 +90,6 @@
             }
         }
 
-        [XmlIgnore]
         public int FontSizeMax
         {
             get
@@ -109,7 +102,6 @@
         /// <summary>
         /// Gets the default icon size for the application.
         /// </summary>
-        [XmlIgnore]
         public int DefaultIconSize
         {
             get
@@ -121,7 +113,6 @@
         /// <summary>
         /// Gets the default font size for the application.
         /// </summary>
-        [XmlIgnore]
         public int DefaultFontSize
         {
             get
@@ -133,7 +124,6 @@
         /// <summary>
         /// Gets the default fixed font size for the application.
         /// </summary>
-        [XmlIgnore]
         public int DefaultFixedFontSize
         {
             get
@@ -145,7 +135,6 @@
         /// <summary>
         /// Gets the internal name and Uri source for all available themes.
         /// </summary>
-        [XmlIgnore]
         public IThemeInfos Themes { get; private set; }
         #endregion properties
 
@@ -185,47 +174,9 @@
         /// <returns></returns>
         public void LoadSessionData(string sessionDataFileName)
         {
-            Profile profileDataModel = null;
-
-            try
-            {
-                if (System.IO.File.Exists(sessionDataFileName))
-                {
-                    FileStream readFileStream = null;
-                    try
-                    {
-                        // Create a new file stream for reading the XML file
-                        readFileStream = new System.IO.FileStream(sessionDataFileName, FileMode.Open, FileAccess.Read, FileShare.Read);
-
-                        // Create a new XmlSerializer instance with the type of the test class
-                        XmlSerializer serializerObj = new XmlSerializer(typeof(Profile));
-
-                        // Load the object saved above by using the Deserialize function
-                        profileDataModel = (Profile)serializerObj.Deserialize(readFileStream);
-                    }
-                    catch (Exception e)
-                    {
-                        logger.Error(e);
-                    }
-                    finally
-                    {
-                        // Cleanup
-                        if (readFileStream != null)
-                            readFileStream.Close();
-                    }
-                }
-
-                SessionData = profileDataModel;
-            }
-            catch (Exception exp)
-            {
-                logger.Error(exp);
-            }
-            finally
-            {
-                if (profileDataModel == null)
-                    profileDataModel = new Profile();  // Just get the defaults if serilization wasn't working here...
-            }
+            // Just get the defaults if serilization wasn't working here...
+            SessionData = new Profile();
+            SessionData.SetObjectFromPersistence(ProfilePersistable.GetObjectFromPersistence(sessionDataFileName));
         }
 
         /// <summary>
@@ -237,31 +188,9 @@
         /// <returns></returns>
         public bool SaveSessionData(string sessionDataFileName, IProfile model)
         {
-            XmlWriterSettings xws = new XmlWriterSettings();
-            xws.NewLineOnAttributes = true;
-            xws.Indent = true;
-            xws.IndentChars = "  ";
-            xws.Encoding = System.Text.Encoding.UTF8;
+            var persistable = model.GetObjectForPersistence();
 
-            // Create a new file stream to write the serialized object to a file
-            XmlWriter xw = null;
-            try
-            {
-                xw = XmlWriter.Create(sessionDataFileName, xws);
-
-                // Create a new XmlSerializer instance with the type of the test class
-                XmlSerializer serializerObj = new XmlSerializer(typeof(Profile));
-
-                serializerObj.Serialize(xw, model);
-
-                return true;
-            }
-            finally
-            {
-                if (xw != null)
-                    xw.Close(); // Cleanup
-
-            }
+            return ProfilePersistable.SaveObjectToPersistence(sessionDataFileName, persistable);
         }
         #endregion Load Save UserSessionData
         #endregion methods

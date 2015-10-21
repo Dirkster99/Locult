@@ -88,6 +88,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Binaries\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MRULib">
+      <HintPath>..\..\Binaries\MRU\MRULib.dll</HintPath>
+    </Reference>
+    <Reference Include="MRUModelLib">
+      <HintPath>..\..\Binaries\MRU\MRUModelLib.dll</HintPath>
+    </Reference>
     <Reference Include="MsgBox">
       <HintPath>..\..\Binaries\MsgBox\MsgBox.dll</HintPath>
     </Reference>

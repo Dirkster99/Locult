@@ -271,9 +271,9 @@
                 var settings = GetService<ISettingsManager>();
 
                 // Persist window position, width and height from this session
-                settings.SessionData.MainWindowPosSz =
+                settings.SessionData.SetMainWindowPosSz(
                   new ViewPosSizeModel(win.Left, win.Top, win.Width, win.Height,
-                                       (win.WindowState == WindowState.Maximized ? true : false));
+                                       (win.WindowState == WindowState.Maximized ? true : false)));
 
                 // Save/initialize program options that determine global programm behaviour
                 appVM.AppLifeCycle.SaveConfigOnAppClosed();

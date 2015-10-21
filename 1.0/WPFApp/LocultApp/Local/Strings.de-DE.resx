@@ -252,7 +252,7 @@
     <value>Fehler beim herunterfahren der Applikation</value>
   </data>
   <data name="STR_MS_Translate_Caption" xml:space="preserve">
-    <value>Microsoft-Übersetzungsdienst</value>
+    <value>Microsoft Translator</value>
     <comment>Caption of corresponding options groupbox in program settings view.</comment>
   </data>
   <data name="STR_MS_TRANSLATE_PASSWD_CAPTION" xml:space="preserve">

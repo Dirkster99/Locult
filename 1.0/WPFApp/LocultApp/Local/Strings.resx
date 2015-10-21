@@ -267,7 +267,7 @@
     <value>Error in shut-down process.</value>
   </data>
   <data name="STR_MS_Translate_Caption" xml:space="preserve">
-    <value>Microsoft Translation Service</value>
+    <value>Microsoft Translator</value>
     <comment>Caption of corresponding options groupbox in program settings view.</comment>
   </data>
   <data name="STR_MS_TRANSLATE_PASSWD_CAPTION" xml:space="preserve">
@@ -461,5 +461,8 @@
   </data>
   <data name="STR_ERROR_CODE" xml:space="preserve">
     <value>Code</value>
+  </data>
+  <data name="STR_LABEL_RECENT_SOLUTION_ITEMS" xml:space="preserve">
+    <value>Recent Solutions</value>
   </data>
 </root>

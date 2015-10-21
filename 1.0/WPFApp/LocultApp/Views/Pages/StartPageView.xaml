@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 
+             xmlns:MRUcontrols="clr-namespace:MRULib;assembly=MRULib"
              xmlns:controls="clr-namespace:LocultApp.Controls.Solution"
              xmlns:conv="clr-namespace:LocultApp.Converter"
              xmlns:local="clr-namespace:LocultApp.Local"
@@ -152,10 +153,11 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0">
+                    <Grid Grid.Row="0" xmlns:conv="clr-namespace:MRULib.Converters;assembly=MRULib">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Margin="3,3">
@@ -184,11 +186,26 @@
                         </Grid>
 
                         <Button Content="{x:Static local:Strings.STR_CAPTION_OPEN_BUTTON}"
-                            ToolTip="{x:Static local:Strings.STR_CAPTION_OPEN_BUTTON_TT}"
-                            Command="{Binding OpenSolutionCommand}"
-                            Margin="3"
-                            Grid.Row="1"
-                            VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                ToolTip="{x:Static local:Strings.STR_CAPTION_OPEN_BUTTON_TT}"
+                                Command="{Binding OpenSolutionCommand}"
+                                Margin="3"
+                                Grid.Row="1"
+                                VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+                        <!-- Show MRU only if it has entries to select from -->
+                        <Grid Grid.Row="2"
+                              Margin="3,12"
+                              Visibility="{Binding Path=MRU.Count, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={conv:ZeroToVisibilityConverter}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="{x:Static local:Strings.STR_LABEL_RECENT_SOLUTION_ITEMS}"
+                                    ContentStringFormat="{}{0}:"
+                                    Target="{Binding ElementName=RecentItemsDisplay}" />
+                            <MRUcontrols:RecentItems Grid.Row="1" DataContext="{Binding MRU}" Name="RecentItemsDisplay" />
+                        </Grid>
                     </Grid>
                 </Grid>
             </TabItem>

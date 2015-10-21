@@ -7,6 +7,7 @@
         <ResourceDictionary Source="/DropDownButtonLib;component/Themes/MetroLight.xaml"/>
         <ResourceDictionary Source="/FsCore;component/Images/Metro/MetroLightIcons.xaml" />
         <ResourceDictionary Source="/ColorPickerLib;component/Themes/MetroLight/Brushes.xaml"/>
+        <ResourceDictionary Source="/MRULib;component/Themes/ModernUI/Light/Theme.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <BitmapImage UriSource="/LocultApp;component/Images/TypeOfDiffState/SourceOnly32.png" x:Key="IconImage_SourceOnly" />

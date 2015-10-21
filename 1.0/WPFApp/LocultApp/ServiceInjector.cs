@@ -27,7 +27,7 @@
             ServiceContainer.Instance.AddService<IMessageBoxService>(new MessageBoxService());
             ServiceContainer.Instance.AddService<IResourceLocator>(new ResourceLocator());
             ServiceContainer.Instance.AddService<IExplorer>(new Explorer());
-            ServiceContainer.Instance.AddService<ISettingsManager>(new SettingsManager());
+            ServiceContainer.Instance.AddService<ISettingsManager>(Settings.Factory.CreateSettingsManager());
 
             ServiceContainer.Instance.AddService<ITranslator>(new Translator());
 
