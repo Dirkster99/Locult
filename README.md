@@ -14,7 +14,7 @@ Locult is a WPF/MVVM localization tool for strings stored in ResX files.
 The program name Locult is an artificial join from 'Localization' and 'Culture',
 because this software is about localizing string resources for other software development projects.
 The localization process can be manually but is supported by the API from Microsoft Translator as
-described at: [url:www.microsoft.com/en-us/translator/translatorapi.aspx](service based machine learning translation from Microsoft).
+described at: [service based machine learning translation from Microsoft](www.microsoft.com/en-us/translator/translatorapi.aspx).
 
 This API lets you translate string resources in a simple configure and click scenario.
 You can translate into more languages than only those that you speak. I routinely localize
