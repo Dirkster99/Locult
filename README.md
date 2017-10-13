@@ -21,9 +21,9 @@ You can translate into more languages than only those that you speak. I routinel
 my own projects in about 10 languages with Locult. The result of this process is that about
 80% of the entire population on this planet can use my open source software with their native language preference.
 
-* [Build Locult from Scratch]*
-* [Getting Started]*
-* [Technical Documentation]*
+* [Build Locult from Scratch](https://github.com/Dirkster99/Locult/wiki/Build-Locult-from-Scratch)
+* [Getting Started](https://github.com/Dirkster99/Locult/wiki/Getting-Started)
+* [Technical Documentation](https://github.com/Dirkster99/Locult/wiki/Technical-Documentation)
 
 <img src="https://github.com/Dirkster99/Docu/blob/master/Locult/Step7.png?raw=true">
 <img src="https://github.com/Dirkster99/Docu/blob/master/Locult/About.png?raw=true">
