@@ -2,7 +2,7 @@
 
 <table border="0">
 <tr>
-<td>https://github.com/Dirkster99/Docu/blob/master/Locult/appbar.snowflake_128.png?raw=true</td>
+<td><img src="https://github.com/Dirkster99/Docu/blob/master/Locult/appbar.snowflake_128.png?raw=true"/></td>
 <td>
 Locult is a WPF/MVVM localization tool for strings stored in ResX files.
 </td>
