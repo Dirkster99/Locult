@@ -25,11 +25,8 @@ my own projects in about 10 languages with Locult. The result of this process is
 * [Getting Started]*
 * [Technical Documentation]*
 
-
-[image:step7.png]
-[image:GettingStarted_NewSolution_de.png]
-
-[image:About.png]
+<img src="https://github.com/Dirkster99/Docu/blob/master/Locult/Step7.png?raw=true">
+<img src="https://github.com/Dirkster99/Docu/blob/master/Locult/About.png?raw=true">
 
 ## Limitations
 The project is currently able to localize only *RESX* string resources, but the architecture is setup to support other file formats in the near future. Please let me know via Issue or Discussion item if you require the translation of other file formats.
