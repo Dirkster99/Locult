@@ -3,7 +3,6 @@
     using AppResourcesLib;
     using LocultApp.Controls.Exception;
     using LocultApp.ViewModels.Pages;
-    using System;
     using System.Threading.Tasks;
     using System.Windows.Input;
 
@@ -44,8 +43,6 @@
         /// Gets whether the viewmodel is currently processing data or not.
         /// </summary>
         bool IsProcessing { get; }
-
-        IExceptionViewModel ViewException { get; }
         #endregion properties
 
         #region methods
