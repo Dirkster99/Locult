@@ -31,5 +31,3 @@ my own projects in about 10 languages with Locult. The result of this process is
 ## Limitations
 The project is currently able to localize only *RESX* string resources, but the architecture is setup to support other file formats in the near future. Please let me know via Issue or Discussion item if you require the translation of other file formats.
 
-I have originally developed this project based on Yalv! with two other software developers on CodePlex:
-* https://yalvlib.codeplex.com</li>
